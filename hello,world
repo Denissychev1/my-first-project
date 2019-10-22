@@ -1,9 +1,0 @@
-var http = require ('http');
-function Hello(request, response) {
-    console.log(request.url);
-    response.write("Hello, World! Author: Denis Sychev");
-    response.end();
-}
-
-http.createServer(Hello).listen(1234);
-console.log('Server is in progress');
