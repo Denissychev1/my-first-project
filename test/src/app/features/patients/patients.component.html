@@ -1,0 +1,28 @@
+<h1>Здесь располагаются пациенты</h1>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Имя</th>
+    <th scope="col">Фамилия</th>
+    <th scope="col">Возраст</th>
+    <th scope="col">Номер для связи</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let patients of Patients; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>{{ patients.name }}</td>
+    <td>{{ patients.secondname }}</td>
+    <td>{{ patients.age | number }}</td>
+    <td>{{ patients.number | number }}</td>
+  </tr>
+  </tbody>
+</table>
+<nav>
+  <p><button class="btn btn-outline-primary" (click)="clickButton()">Добавить пациента</button></p>
+  <p><button class="btn btn-outline-primary" (click)="clicButton()">Назад</button></p>
+</nav>
+<router-outlet></router-outlet>
+
+
