@@ -3,6 +3,12 @@ const app = express();
 const routes = require('./routes');
 const User = require('./bd/connection');
 const Imit = require('./bd/imitations');
+const compression = require('compression');
+const bodyParser = require('body-parser');
+
+app.use(compression());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 const port = 2000;
 
@@ -22,6 +28,23 @@ app.use(function (req, res, next) {
   // Pass to next layer of middleware
   next();
 });
+
+app.use('/patients', function (req, res) {
+  User.findAll({raw: true}).then(data => {
+    res.send(
+      data
+    );
+  }).catch(err => console.log(err));
+});
+
+app.use('/im', function (req, res) {
+  Imit.findAll({raw: true}).then(datal => {
+    res.send(
+      datal
+    );
+  }).catch(err => console.log(err));
+});
+
 app.listen(port, err => {
   if (err) {
     console.log(err);
@@ -29,27 +52,4 @@ app.listen(port, err => {
   }
   console.log(`App listening on port ${port}`);
 });
-
-
-app.use('/patients', function (req, res) {
-
-  User.findAll({raw: true}).then(data => {
-    res.send(
-      data
-    );
-  }).catch(err => console.log(err));
-
-
-});
-app.use('/im', function (req, res) {
-
-  Imit.findAll({raw: true}).then(datal => {
-    res.send(
-      datal
-    );
-  }).catch(err => console.log(err));
-
-
-});
-
 

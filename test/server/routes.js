@@ -1,13 +1,12 @@
-module.exports = function(app) {
-  const patients = require('../server/controller/userController');
+const express = require('express');
+const router = express.Router();
 
-  // Create a new Customer
-  app.post('/patients', patients.create);
+const patients = require('../server/controller/userController');
 
-  // Retrieve all Customer
-  app.get('/patients', patients.findAll);
+// Create a new Customer
+router.post('/patients', patients.create);
 
+// Delete a Customer with Id
+router.delete('/patients', patients.delete);
 
-  // Delete a Customer with Id
-  app.delete('/patients', patients.delete);
-};
+module.exports = router;

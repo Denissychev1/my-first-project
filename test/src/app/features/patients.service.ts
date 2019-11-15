@@ -7,7 +7,7 @@ import {Patients} from "../../../server/bd/connection"
   providedIn: 'root'
 })
 export class PatientsService {
-  private patientsUrl = 'http://localhost:2000/patients';
+  private patientsUrl = 'http://localhost:2000/api/patients';
   constructor(private http: HttpClient) {
   }
 
@@ -17,6 +17,7 @@ export class PatientsService {
 
 
   addPatients (patients: Patients): Observable<Patients> {
+    console.log(patients);
     return this.http.post<Patients>(this.patientsUrl, patients);
   }
 

@@ -8,7 +8,8 @@ const sequelize = new Sequelize('Patients', 'postgres', '12345', {
   }
 });
 const db = {};
-db.customers = require('../bd/connection');
+
+sequelize.sync();
 module.exports = {Sequelize, sequelize,db};
 
 
