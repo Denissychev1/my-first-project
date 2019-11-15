@@ -1,18 +1,10 @@
-const db = require('../bd/db.config.js');
-const Patients = db.patients;
+const Patients = require('../bd/connection');
 // Creation of Patient
 exports.create = (req, res) => {
   // Save to PostgreSQL database
-  Patients.create({
-    "firstname": req.body.firstname,
-    "lastname": req.body.lastname,
-    "age": req.body.age,
-    "id": req.body.id,
-    "telephone": req.body.telephone,
-    "password": req.body.password
-  }).then(patient => {
+  Patients.create(req.body).then(patient => {
     // Send created pat to cl
-    res.json(patient);
+    res.status(201).json(patient);
   }).catch(err => {
     console.log(err);
     res.status(500).json({msg: "error", details: err});
