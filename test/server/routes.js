@@ -1,10 +1,13 @@
-const express = require('express');
-const router = express.Router();
+module.exports = function(app) {
+  const patients = require('../server/controller/userController');
 
-const imitationController = require('./controller/imitationController');
-const userController = require('./controller/userController');
+  // Create a new Customer
+  app.post('/patients', patients.create);
 
-router.get('/users', userController.getUsers);
-router.get('/imitations', imitationController.getImitations);
+  // Retrieve all Customer
+  app.get('/patients', patients.findAll);
 
-module.exports = router;
+
+  // Delete a Customer with Id
+  app.delete('/patients', patients.delete);
+};

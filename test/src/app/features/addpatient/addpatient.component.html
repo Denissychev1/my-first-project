@@ -1,13 +1,18 @@
 <div ng-controller="Controller">
-  <form novalidate class="form">
-    <label>Введите имя: <input type="text" ngModel="patients.name"/></label><br />
-    <label>Введите фамилию: <input type="email" ngModel="patients.secondname"/></label><br />
-    <label>Введите возраст: <input type="email" ngModel="patients.age"/></label><br />
-    <label>Введите номер для связи: <input type="email" ngModel="patients.number"/></label><br />
+  <form [formGroup]="PatientsForm">
+    <label>Введите номер: <input type="text" formControlName="id"/></label><br />
+    <label>Введите имя: <input type="text" formControlName="firstname"/></label><br />
+    <label>Введите фамилию: <input type="email" formControlName="lastname"/></label><br />
+    <label>Введите возраст: <input type="email" formControlName="age"/></label><br />
+    <label>Введите номер для связи: <input type="email" formControlName="telephone"/></label><br />
+    <label>Введите имя: <input type="text" formControlName="password"/></label><br />
     <input type="button" (click)="reset()" value="Отмена" />
-    <input type="submit" ng-click="update(patients)" value="Добавить" />
+    <input type="button" (click)="onsubmit()" value="Добавить" />
   </form>
 </div>
 
+<div>
+  {{PatientsForm.value | json}}
+</div>
 <script>
 </script>

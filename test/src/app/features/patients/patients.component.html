@@ -10,12 +10,12 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let patients of Patients; index as i">
+  <tr *ngFor="let patients of patients; index as i">
     <th scope="row">{{ i + 1 }}</th>
-    <td>{{ patients.name }}</td>
-    <td>{{ patients.secondname }}</td>
-    <td>{{ patients.age | number }}</td>
-    <td>{{ patients.number | number }}</td>
+    <td>{{ patients.firstname }}</td>
+    <td>{{ patients.lastname }}</td>
+    <td>{{ patients.age }}</td>
+    <td>{{ patients.telephone}}</td>
   </tr>
   </tbody>
 </table>

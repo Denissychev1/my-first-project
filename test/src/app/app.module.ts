@@ -14,7 +14,8 @@ import { AddpatientComponent } from './features/addpatient/addpatient.component'
 import { AddimitationComponent } from './features/addimitation/addimitation.component';
 import { ChoiseComponent } from './features/choise/choise.component';
 import {NgbButtonsModule, NgbDropdownModule, NgbProgressbarModule} from "@ng-bootstrap/ng-bootstrap";
-
+import {ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -37,7 +38,9 @@ import {NgbButtonsModule, NgbDropdownModule, NgbProgressbarModule} from "@ng-boo
     FormsModule,
     NgbButtonsModule,
     NgbProgressbarModule,
-    NgbDropdownModule
+    NgbDropdownModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

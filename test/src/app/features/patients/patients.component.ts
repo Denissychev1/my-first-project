@@ -1,56 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {AppComponent} from "../../app.component";
-import {AddpatientComponent} from "../addpatient/addpatient.component";
-interface Patients {
-  name: string;
-  secondname: string;
-  age: number;
-  number: number;
-}
+import {PatientsService} from "../patients.service";
+import {Pat} from "../pat";
 
-let Patients: Patients[] = [
-  {
-    name: 'Иван',
-    secondname: 'Иванов',
-    age: 17,
-    number: 121313123432754
-  },
-  {
-    name: 'Петр',
-    secondname: 'Петров',
-    age: 14,
-    number: 36624199
-  },
-  {
-    name: 'Василий',
-    secondname: 'Васильев',
-    age: 17,
-    number: 1469754
-  },
-  {
-    name: 'Денис',
-    secondname: 'Сычев',
-    age: 20,
-    number: 12345
-  }
-];
 
 @Component({
   selector: 'app-patients',
   templateUrl: './patients.component.html',
+  providers: [PatientsService],
   styleUrls: ['./patients.component.scss']
 })
 export class PatientsComponent implements OnInit {
   declarations: [
     AppComponent,
-    AddpatientComponent
   ];
-  constructor(private router: Router) { }
-  Patients = Patients;
+  constructor(private router: Router,
+  private patientsService:PatientsService) { }
+  patients: Pat[];
   ngOnInit() {
-  }
-
+    this.patientsService.getPatients().subscribe(patients => this.patients =patients)
+};
   clickButton() {
     this.router.navigateByUrl('/addpatient')
   }
