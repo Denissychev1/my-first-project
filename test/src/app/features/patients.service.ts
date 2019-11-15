@@ -7,7 +7,7 @@ import {Patients} from "../../../server/bd/connection"
   providedIn: 'root'
 })
 export class PatientsService {
-  private patientsUrl = 'http://localhost:2000/api/patients';
+  private patientsUrl = '/api/patients';
   constructor(private http: HttpClient) {
   }
 
