@@ -1,4 +1,14 @@
 const Patients = require('../bd/connection');
+
+//show All patients
+exports.getPatients = (req, res) => {
+  Patients.findAll({raw: true}).then(data => {
+    res.send(
+      data
+    );
+  }).catch(err => console.log(err));
+};
+
 // Creation of Patient
 exports.create = (req, res) => {
   // Save to PostgreSQL database
