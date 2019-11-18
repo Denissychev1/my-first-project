@@ -2,9 +2,9 @@
   <form [formGroup]="PatientsForm">
     <label>Введите номер: <input type="text" formControlName="id"/></label><br />
     <label>Введите имя: <input type="text" formControlName="firstname"/></label><br />
-    <label>Введите фамилию: <input type="email" formControlName="lastname"/></label><br />
-    <label>Введите возраст: <input type="email" formControlName="age"/></label><br />
-    <label>Введите номер для связи: <input type="email" formControlName="telephone"/></label><br />
+    <label>Введите фамилию: <input type="text" formControlName="lastname"/></label><br />
+    <label>Введите возраст: <input type="text" formControlName="age"/></label><br />
+    <label>Введите номер для связи: <input type="text" formControlName="telephone"/></label><br />
     <label>Введите имя: <input type="text" formControlName="password"/></label><br />
     <input type="button" (click)="reset()" value="Отмена" />
     <input type="button" (click)="onsubmit()" value="Добавить" />

@@ -9,6 +9,9 @@ router.post('/patients', patients.create);
 //Showing all patients
 router.get('/patients', patients.getPatients);
 
+// Patient by name
+router.get('/patients/:id', patients.findById);
+
 // Delete a Customer with Id
 router.delete('/patients', patients.delete);
 

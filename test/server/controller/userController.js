@@ -20,6 +20,7 @@ exports.create = (req, res) => {
     res.status(500).json({msg: "error", details: err});
   });
 };
+
 // Delete a Patient by Id
 exports.delete = (req, res) => {
   const id = req.params.id;
@@ -32,3 +33,15 @@ exports.delete = (req, res) => {
     res.status(500).json({msg: "error", details: err});
   });
 };
+
+// Find a Patient by name
+exports.findById = (req, res) => {
+  Patients.findById(req.body.id).then(patient => {
+    res.json(patient);
+  }).catch(err => {
+    console.log(err);
+    res.status(500).json({msg: "error", details: err});
+  });
+};
+
+

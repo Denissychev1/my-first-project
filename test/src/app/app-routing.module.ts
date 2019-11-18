@@ -10,19 +10,20 @@ import {ImitationsComponent} from "./features/imitations/imitations.component";
 import {AddpatientComponent} from "./features/addpatient/addpatient.component";
 import {AddimitationComponent} from "./features/addimitation/addimitation.component";
 import {ChoiseComponent} from "./features/choise/choise.component";
-
+import {AdminGuard} from "./features/admin/admin.guard";
+import {PatientsGuard} from "./features/patients.guard";
 
 
 const routes: Routes = [
-  { path: 'lk', component: LkComponent },
-  { path: 'help', component: HelpComponent },
-  {path: 'admin', component: AdminComponent},
-  {path: 'tests', component: TestsComponent},
-  {path: 'progress', component: ProgressComponent},
-  {path:'patients', component: PatientsComponent},
-  {path:'imitations', component: ImitationsComponent},
-  {path:'addpatient', component: AddpatientComponent},
-  {path:'addimitation', component: AddimitationComponent},
+  { path: 'lk', component: LkComponent, canActivate: [PatientsGuard] },
+  { path: 'help', component: HelpComponent, canActivate: [PatientsGuard] },
+  {path: 'admin', component: AdminComponent, canActivate: [AdminGuard]},
+  {path: 'tests', component: TestsComponent, canActivate: [PatientsGuard]},
+  {path: 'progress', component: ProgressComponent, canActivate: [PatientsGuard]},
+  {path:'patients', component: PatientsComponent, canActivate: [AdminGuard]},
+  {path:'imitations', component: ImitationsComponent, canActivate: [AdminGuard]},
+  {path:'addpatient', component: AddpatientComponent, canActivate: [AdminGuard]},
+  {path:'addimitation', component: AddimitationComponent,canActivate: [AdminGuard]},
   {path:'choise', component: ChoiseComponent}
 
 
@@ -30,6 +31,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers:[AdminGuard, PatientsGuard]
 })
 export class AppRoutingModule { }
