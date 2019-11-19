@@ -12,12 +12,13 @@ import {AddimitationComponent} from "./features/addimitation/addimitation.compon
 import {ChoiseComponent} from "./features/choise/choise.component";
 import {AdminGuard} from "./features/admin/admin.guard";
 import {PatientsGuard} from "./features/patients.guard";
+import {AuthGuard} from "./features/auth.guard";
 
 
 const routes: Routes = [
-  { path: 'lk', component: LkComponent, canActivate: [PatientsGuard] },
+  { path: 'lk', component: LkComponent, canActivate:[AuthGuard] },
   { path: 'help', component: HelpComponent, canActivate: [PatientsGuard] },
-  {path: 'admin', component: AdminComponent, canActivate: [AdminGuard]},
+  {path: 'admin', component: AdminComponent},
   {path: 'tests', component: TestsComponent, canActivate: [PatientsGuard]},
   {path: 'progress', component: ProgressComponent, canActivate: [PatientsGuard]},
   {path:'patients', component: PatientsComponent, canActivate: [AdminGuard]},
@@ -32,6 +33,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers:[AdminGuard, PatientsGuard]
+  providers:[AdminGuard, PatientsGuard,AuthGuard]
 })
 export class AppRoutingModule { }

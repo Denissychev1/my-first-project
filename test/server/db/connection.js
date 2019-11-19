@@ -2,26 +2,33 @@ const db = require('./db.config');
 const sequelize = db.sequelize;
 const Sequelize = db.Sequelize;
 
-const Imit = sequelize.define("imitations",{
+const Patients = sequelize.define('patients', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
     primaryKey: true,
     allowNull: false
   },
-  name: {
+  firstname: {
     type: Sequelize.STRING,
     allowNull: false
   },
-  question: {
+  lastname: {
     type: Sequelize.STRING,
     allowNull: false
   },
-  answers: {
+  age: {
     type: Sequelize.INTEGER,
     allowNull: false
   },
+  telephone: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
+  password: {
+    type: Sequelize.INTEGER,
+  }
 });
 
+module.exports = Patients;
 
-module.exports =Imit;

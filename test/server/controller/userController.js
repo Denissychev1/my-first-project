@@ -1,4 +1,4 @@
-const Patients = require('../bd/connection');
+const Patients = require('../db/connection');
 
 //show All patients
 exports.getPatients = (req, res) => {
@@ -10,24 +10,25 @@ exports.getPatients = (req, res) => {
 };
 
 // Creation of Patient
-exports.create = (req, res) => {
-  // Save to PostgreSQL database
-  Patients.create(req.body).then(patient => {
+exports.create = async (req, res) => {
+  try {
+    // Save to PostgreSQL database
+    let patient = await Patients.create(req.body);
     // Send created pat to cl
     res.status(201).json(patient);
-  }).catch(err => {
+  } catch (err) {
     console.log(err);
     res.status(500).json({msg: "error", details: err});
-  });
+  }
 };
 
 // Delete a Patient by Id
 exports.delete = (req, res) => {
-  const id = req.params.id;
+  const id = req.query.id;
   Patients.destroy({
-    where: { id: id }
+    where: {id: id}
   }).then(() => {
-    res.status(200).json( { msg: 'Deleted Successfully. Patient Id = ' + id } );
+    res.status(200).json({msg: 'Deleted Successfully. Patient Id = ' + id});
   }).catch(err => {
     console.log(err);
     res.status(500).json({msg: "error", details: err});
@@ -36,12 +37,37 @@ exports.delete = (req, res) => {
 
 // Find a Patient by name
 exports.findById = (req, res) => {
-  Patients.findById(req.body.id).then(patient => {
+  const id = req.query.id;
+  Patients.findByPk(id).then(patient => {
     res.json(patient);
   }).catch(err => {
     console.log(err);
     res.status(500).json({msg: "error", details: err});
   });
 };
+
+//auth?!
+exports.auth = async (req, res) => {
+  const id = req.body.value.id;
+  const password = req.body.value.password;
+
+  if (!id || !password) {
+    res.sendStatus(400).send();
+    return;
+  }
+
+  const user = await Patients.findOne({
+    where: {
+      id: id,
+      password: password
+    }
+  });
+  if (user) {
+    res.sendStatus(200).then(res.send({user}));
+  } else {
+    res.sendStatus(401).then(res.send('invalid'));
+  }
+};
+
 
 

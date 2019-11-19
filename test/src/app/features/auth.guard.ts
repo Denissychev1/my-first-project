@@ -1,11 +1,16 @@
-import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from "@angular/router";
-import {Observable} from "rxjs";
+import { Injectable } from '@angular/core';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { AuthService }      from './auth.service';
 
-export class PatientsGuard implements CanActivate{
+@Injectable({
+  providedIn: 'root',
+})
+export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : Observable<boolean> | boolean{
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): boolean {
     let url: string = state.url;
 
     return this.checkLogin(url);
@@ -18,8 +23,7 @@ export class PatientsGuard implements CanActivate{
     this.authService.redirectUrl = url;
 
     // Navigate to the login page with extras
-    this.router.navigateByUrl('/choise');
+    this.router.navigateByUrl('/lk');
     return false;
   }
-  }
-
+}
