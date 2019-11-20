@@ -1,24 +1,19 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Login} from './models/login';
+import {Router} from '@angular/router';
+import {Observable} from 'rxjs';
 
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
-  isLoggedIn = false;
+  public isLoggedIn = false;
   redirectUrl: string;
-  constructor(private http: HttpClient) {
-  }
-  login(value: any) {
-    this.http.post<Login>('/api/qwe', {value}).subscribe();
-    if (this.http.get('api/qwe') === null) {
 
-
-      return this.isLoggedIn;
-    }
+  constructor(private http: HttpClient, private router: Router) {
   }
-  logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
+
+  login(value: any): Observable<any> {
+   return this.http.post<Login>('/api/qwe', {value});
   }
 }

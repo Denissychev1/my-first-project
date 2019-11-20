@@ -63,7 +63,7 @@ exports.auth = async (req, res) => {
     }
   });
   if (user) {
-    res.send(null);
+    res.status(200).send(user);
   } else {
     res.status(401).send('invalid');
   }

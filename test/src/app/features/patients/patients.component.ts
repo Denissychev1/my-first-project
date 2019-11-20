@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
-import {AppComponent} from "../../app.component";
-import {PatientsService} from "../patients.service";
-import {Pat} from "../models/pat";
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {AppComponent} from '../../app.component';
+import {PatientsService} from '../patients.service';
+import {Pat} from '../models/pat';
 
 
 @Component({
@@ -15,17 +15,22 @@ export class PatientsComponent implements OnInit {
   declarations: [
     AppComponent,
   ];
+
   constructor(private router: Router,
-  private patientsService:PatientsService) { }
+              private patientsService: PatientsService) {
+  }
+
   patients: Pat[];
+
   ngOnInit() {
-    this.patientsService.getPatients().subscribe(patients => this.patients =patients)
-};
+    this.patientsService.getPatients().subscribe(patients => this.patients = patients);
+  };
+
   clickButton() {
-    this.router.navigateByUrl('/addpatient')
+    this.router.navigateByUrl('/addpatient');
   }
 
   clicButton() {
-    this.router.navigateByUrl('/admin')
+    this.router.navigateByUrl('/admin');
   }
 }
