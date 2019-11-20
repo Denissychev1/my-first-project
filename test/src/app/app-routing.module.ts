@@ -16,23 +16,22 @@ import {AuthGuard} from "./features/auth.guard";
 
 
 const routes: Routes = [
-  { path: 'lk', component: LkComponent, canActivate:[AuthGuard] },
+  { path: 'lk', component: LkComponent, canActivate: [AuthGuard] },
   { path: 'help', component: HelpComponent, canActivate: [PatientsGuard] },
   {path: 'admin', component: AdminComponent},
   {path: 'tests', component: TestsComponent, canActivate: [PatientsGuard]},
   {path: 'progress', component: ProgressComponent, canActivate: [PatientsGuard]},
-  {path:'patients', component: PatientsComponent, canActivate: [AdminGuard]},
-  {path:'imitations', component: ImitationsComponent, canActivate: [AdminGuard]},
-  {path:'addpatient', component: AddpatientComponent, canActivate: [AdminGuard]},
-  {path:'addimitation', component: AddimitationComponent,canActivate: [AdminGuard]},
-  {path:'choise', component: ChoiseComponent}
-
-
+  {path: 'patients', component: PatientsComponent, canActivate: [AdminGuard]},
+  {path: 'imitations', component: ImitationsComponent, canActivate: [AdminGuard]},
+  {path: 'addpatient', component: AddpatientComponent, canActivate: [AdminGuard]},
+  {path: 'addimitation', component: AddimitationComponent, canActivate: [AdminGuard]},
+  {path: 'choise', component: ChoiseComponent},
+  { path: '**', redirectTo: 'choise' }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers:[AdminGuard, PatientsGuard,AuthGuard]
+  providers:[AdminGuard, PatientsGuard, AuthGuard]
 })
 export class AppRoutingModule { }

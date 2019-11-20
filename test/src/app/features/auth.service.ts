@@ -9,13 +9,15 @@ export class AuthService {
   redirectUrl: string;
   constructor(private http: HttpClient) {
   }
+
   login(value: any) {
-    this.http.post<Login>('/api/qwe', {value}).subscribe();
-    if (this.http.get('api/qwe') === null) {
+    this.http.post<Login>('/api/qwe', {value}).subscribe( data => {
 
+      },
+      error => {
 
-      return this.isLoggedIn;
-    }
+      }
+    );
   }
   logout() {
     // remove user from local storage to log user out
