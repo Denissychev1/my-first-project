@@ -54,6 +54,7 @@ patient= new Chpatient();
   clikButton() {
     this.authenticationService.login(this.PatientForm.value);
     console.log(this.PatientForm.value);
+    this.router.navigateByUrl('/lk');
 
   }
 

@@ -52,7 +52,7 @@ exports.auth = async (req, res) => {
   const password = req.body.value.password;
 
   if (!id || !password) {
-    res.sendStatus(400).send();
+    res.status(400).send('check your data');
     return;
   }
 
@@ -63,9 +63,9 @@ exports.auth = async (req, res) => {
     }
   });
   if (user) {
-    res.sendStatus(200).then(res.send({user}));
+    res.send(null);
   } else {
-    res.sendStatus(401).then(res.send('invalid'));
+    res.status(401).send('invalid');
   }
 };
 
