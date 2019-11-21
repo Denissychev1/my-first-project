@@ -10,7 +10,7 @@
   ],
   "include": [
     "src/**/*.ts",
-    "src/app/features/User/user.module.ts"
+    "src/app/features/user/user.module.ts"
   ],
   "exclude": [
     "src/test.ts",
