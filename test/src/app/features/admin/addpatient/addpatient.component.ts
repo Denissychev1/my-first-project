@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import{PatientsService} from "../patients.service";
-import {Pat} from "../models/pat";
+import{PatientsService} from "../../patients.service";
+import {Pat} from "../../models/pat";
 
 
 @Component({

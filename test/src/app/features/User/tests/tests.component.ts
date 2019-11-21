@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-tests',
@@ -9,16 +9,17 @@ import {Router} from "@angular/router";
 export class TestsComponent implements OnInit {
   model: 1;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
   }
 
   clickButton() {
-    this.router.navigateByUrl('/addimitation')
+    this.router.navigateByUrl('/user/addimitation');
   }
 
   clicButton() {
-    this.router.navigateByUrl('/admin')
+    this.router.navigateByUrl('/user/admin');
   }
 }

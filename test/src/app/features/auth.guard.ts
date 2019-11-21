@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 import {AuthService} from './auth.service';
 
 export class AuthGuard implements CanActivate {
-  constructor(private authservice: AuthService){}
+  constructor(private authservice: AuthService) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
 

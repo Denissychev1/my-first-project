@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-help',
@@ -8,12 +8,13 @@ import {Router} from "@angular/router";
 })
 export class HelpComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
   }
 
   clicButton() {
-    this.router.navigateByUrl('/lk')
+    this.router.navigateByUrl('/user/lk');
   }
 }

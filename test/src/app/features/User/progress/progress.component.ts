@@ -14,6 +14,6 @@ export class ProgressComponent implements OnInit {
   }
 
   clickButton() {
-    this.router.navigateByUrl('/lk')
+    this.router.navigateByUrl('/user/lk');
   }
 }

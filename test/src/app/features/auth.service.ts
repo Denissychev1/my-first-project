@@ -11,13 +11,7 @@ export class AuthService {
   }
 
   login(value: any) {
-    this.http.post<Login>('/api/qwe', {value}).subscribe( data => {
-
-      },
-      error => {
-
-      }
-    );
+    return this.http.post<Login>('/api/qwe', {value});
   }
   logout() {
     // remove user from local storage to log user out

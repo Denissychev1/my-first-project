@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {AppComponent} from '../../app.component';
-import {PatientsService} from '../patients.service';
-import {Pat} from '../models/pat';
+import {AppComponent} from '../../../app.component';
+import {PatientsService} from '../../patients.service';
+import {Pat} from '../../models/pat';
 
 
 @Component({
