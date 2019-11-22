@@ -11,13 +11,13 @@ const routes: Routes = [
     loadChildren: () => import('./features/admin/admin.module').then(m => m.AdminModule),
     canActivate: [AuthGuard]
   },
-  {path: '', component: ChoiseComponent},
   {
     path: 'user',
     loadChildren: () => import('./features/user/user.module').then (m => m.UserModule),
     canActivate: [AuthGuard]
   },
-  {path: '', redirectTo: 'choise', pathMatch: 'full'}
+  { path: '', component: ChoiseComponent },
+  { path: '**', component: ChoiseComponent }
 ];
 
 @NgModule({
