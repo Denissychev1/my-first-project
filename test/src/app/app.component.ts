@@ -9,10 +9,4 @@ import {Router} from '@angular/router';
 export class AppComponent {
   title = 'Work';
   model: 1;
-  constructor(private router: Router) {
-  }
-
-  clikButton() {
-    this.router.navigateByUrl('/choise');
-  }
 }

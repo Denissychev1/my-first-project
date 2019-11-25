@@ -16,10 +16,10 @@ export class TestsComponent implements OnInit {
   }
 
   clickButton() {
-    this.router.navigateByUrl('/user/addimitation');
+    this.router.navigateByUrl('/admin/addimitation');
   }
 
   clicButton() {
-    this.router.navigateByUrl('/user/admin');
+    this.router.navigateByUrl('/admin');
   }
 }

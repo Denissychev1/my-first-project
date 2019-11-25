@@ -8,13 +8,13 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {UserModule} from './features/user/user.module';
 import {AdminModule} from './features/admin/admin.module';
-import {ChoiseComponent} from './features/choise/choise.component';
+import {LoginModule} from './features/login/login.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChoiseComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,8 +24,9 @@ import {ChoiseComponent} from './features/choise/choise.component';
     NgbDropdownModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AdminModule,
-    UserModule
+    AdminModule.forRoot(),
+    UserModule.forRoot(),
+    LoginModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 interface Country {
   name: string;
@@ -36,17 +36,20 @@ const COUNTRIES: Country[] = [
 ];
 
 @Component({
-  selector: 'imitations',
+  selector: 'app-imitations',
   templateUrl: './imitations.component.html'
 })
 export class ImitationsComponent implements OnInit {
-  constructor(private router: Router) { }
-   countries=COUNTRIES;
+  constructor(private router: Router) {
+  }
+
+  countries = COUNTRIES;
+
   ngOnInit() {
   }
 
 
   clicButton() {
-    this.router.navigateByUrl('/lk')
+    this.router.navigateByUrl('/user/lk');
   }
 }

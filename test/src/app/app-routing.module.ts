@@ -3,7 +3,6 @@ import {Routes, RouterModule} from '@angular/router';
 import {AdminGuard} from './features/admin/admin.guard';
 import {PatientsGuard} from './features/patients.guard';
 import {AuthGuard} from './features/auth.guard';
-import {ChoiseComponent} from './features/choise/choise.component';
 
 const routes: Routes = [
   {
@@ -11,19 +10,25 @@ const routes: Routes = [
     loadChildren: () => import('./features/admin/admin.module').then(m => m.AdminModule),
     canActivate: [AuthGuard]
   },
-  {path: '', component: ChoiseComponent},
   {
     path: 'user',
     loadChildren: () => import('./features/user/user.module').then (m => m.UserModule),
     canActivate: [AuthGuard]
+
   },
-  {path: '', redirectTo: 'choise', pathMatch: 'full'}
+  {path: 'login', loadChildren: () => import('./features/login/login.module').then(m => m.LoginModule), },
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: '**', redirectTo: 'login', pathMatch: 'full'}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {enableTracing: true})],
   exports: [RouterModule],
   providers: [AdminGuard, PatientsGuard, AuthGuard]
 })
 export class AppRoutingModule {
+
+
+
+
 }

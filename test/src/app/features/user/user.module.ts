@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {NgbButtonsModule, NgbDropdownModule, NgbProgressbarModule} from '@ng-bootstrap/ng-bootstrap';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import {TestsComponent} from './tests/tests.component';
+import {ImitationsComponent} from './imitations/imitations.component';
 import {HelpComponent} from './help/help.component';
 import {LkComponent} from './lk/lk.component';
 import {ProgressComponent} from './progress/progress.component';
@@ -16,7 +16,7 @@ import {AuthGuard} from '../auth.guard';
 
 @NgModule({
   declarations: [
-    TestsComponent,
+    ImitationsComponent,
     HelpComponent,
     LkComponent,
     ProgressComponent,
@@ -36,4 +36,7 @@ import {AuthGuard} from '../auth.guard';
   bootstrap: []
 })
 export class UserModule {
+  static forRoot() {
+    return UserModule;
+  }
 }

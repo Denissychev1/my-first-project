@@ -2,15 +2,15 @@ import { NgModule } from '@angular/core';
 import {AdminComponent} from './admin.component';
 import {RouterModule, Routes} from '@angular/router';
 import {PatientsComponent} from './patients/patients.component';
-import {ImitationsComponent} from './imitations/imitations.component';
 import {AddpatientComponent} from './addpatient/addpatient.component';
 import {AddimitationComponent} from './addimitation/addimitation.component';
+import {TestsComponent} from './tests/tests.component';
 
 
 const routes: Routes = [
    {path: 'admin', component: AdminComponent},
    {path: 'patients', component: PatientsComponent},
-   {path: 'imitations', component: ImitationsComponent},
+   {path: 'tests', component: TestsComponent},
    {path: 'addpatient', component: AddpatientComponent},
    {path: 'addimitation', component: AddimitationComponent},
 ];

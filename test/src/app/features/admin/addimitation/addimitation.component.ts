@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-addimitation',
@@ -8,12 +8,13 @@ import {Router} from "@angular/router";
 })
 export class AddimitationComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
   }
 
   reset() {
-    this.router.navigateByUrl('/tests')
+    this.router.navigateByUrl('/tests');
   }
 }
