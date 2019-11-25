@@ -5,7 +5,8 @@
     <label>Введите фамилию: <input type="text" formControlName="lastname"/></label><br />
     <label>Введите возраст: <input type="text" formControlName="age"/></label><br />
     <label>Введите номер для связи: <input type="text" formControlName="telephone"/></label><br />
-    <label>Введите имя: <input type="text" formControlName="password"/></label><br />
+    <label>Введите пароль: <input type="text" formControlName="password"/></label><br />
+    <label>Является ли администратором: <input type="checkbox" formControlName="isAdmin" value="true" /></label><br />
     <input type="button" (click)="reset()" value="Отмена" />
     <input type="button" (click)="onsubmit()" value="Добавить" />
   </form>

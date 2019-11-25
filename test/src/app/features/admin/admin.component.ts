@@ -16,11 +16,11 @@ export class AdminComponent implements OnInit {
   }
 
   clickButton() {
-    this.router.navigateByUrl('/patients');
+    this.router.navigateByUrl('/admin/patients');
   }
 
   clikButton() {
-    this.router.navigateByUrl('/tests');
+    this.router.navigateByUrl('/admin/tests');
   }
 
 

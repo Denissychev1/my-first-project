@@ -1,4 +1,4 @@
-const Patients = require('../db/connection');
+const Patients = require('../db/patients');
 
 //show All patients
 exports.getPatients = (req, res) => {
@@ -62,9 +62,10 @@ exports.auth = async (req, res) => {
       password: password
     }
   });
-  if (user) {
-    res.status(200).send(user);
-  } else {
+  if (user) { if (user.isAdmin === true){res.send(true)}
+  else {res.send(false)}
+  }
+  else {
     res.status(401).send('invalid');
   }
 };

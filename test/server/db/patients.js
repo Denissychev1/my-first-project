@@ -27,7 +27,8 @@ const Patients = sequelize.define('patients', {
   },
   password: {
     type: Sequelize.INTEGER,
-  }
+  },
+  isAdmin:{type: Sequelize.BOOLEAN}
 });
 
 module.exports = Patients;

@@ -7,6 +7,8 @@
     <th scope="col">Фамилия</th>
     <th scope="col">Возраст</th>
     <th scope="col">Номер для связи</th>
+    <th scope="col">Пароль</th>
+    <th scope="col">Администратор</th>
   </tr>
   </thead>
   <tbody>
@@ -16,12 +18,18 @@
     <td>{{ patients.lastname }}</td>
     <td>{{ patients.age }}</td>
     <td>{{ patients.telephone}}</td>
+    <td>{{ patients.password}}</td>
+    <td>{{ patients.isAdmin}}</td>
   </tr>
   </tbody>
 </table>
 <nav>
   <p><button class="btn btn-outline-primary" (click)="clickButton()">Добавить пациента</button></p>
   <p><button class="btn btn-outline-primary" (click)="clicButton()">Назад</button></p>
+  <form>
+    <label>Введите номер: <input type="text" formControlName="id"/></label><br />
+  </form>
+  <p><button class="btn btn-outline-primary" >Delete Patient</button></p>
 </nav>
 <router-outlet></router-outlet>
 

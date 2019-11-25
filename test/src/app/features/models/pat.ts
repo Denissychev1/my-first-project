@@ -4,5 +4,6 @@ export class Pat {
   lastname: string;
   age: number;
   telephone: number;
-  password:number;
+  password: number;
+  isAdmin: boolean;
 }

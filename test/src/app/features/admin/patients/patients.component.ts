@@ -24,10 +24,10 @@ export class PatientsComponent implements OnInit {
 
   ngOnInit() {
     this.patientsService.getPatients().subscribe(patients => this.patients = patients);
-  };
+  }
 
   clickButton() {
-    this.router.navigateByUrl('/addpatient');
+    this.router.navigateByUrl('/admin/addpatient');
   }
 
   clicButton() {

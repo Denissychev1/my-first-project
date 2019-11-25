@@ -1,0 +1,13 @@
+form {display: table;
+  margin-left: auto;
+  margin-right: auto;
+width: 30%;
+}
+button{position: absolute;
+top: 30%;
+left: 45%}
+body{position: center;}
+
+input.ng-touched.ng-invalid{
+  border-color: red;
+}

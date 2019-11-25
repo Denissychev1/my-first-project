@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () => import('./features/admin/admin.module').then(m => m.AdminModule),
-    canActivate: [AuthGuard]
+
   },
   {
     path: 'user',
@@ -22,7 +22,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {enableTracing: true})],
+  imports: [RouterModule.forRoot(routes, {enableTracing: false})],
   exports: [RouterModule],
   providers: [AdminGuard, PatientsGuard, AuthGuard]
 })

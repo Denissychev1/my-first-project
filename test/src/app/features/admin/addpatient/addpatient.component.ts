@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
-import{PatientsService} from "../../patients.service";
-import {Pat} from "../../models/pat";
+import {Component, OnInit} from '@angular/core';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {PatientsService} from '../../patients.service';
+import {Pat} from '../../models/pat';
 
 
 @Component({
@@ -45,33 +45,34 @@ export class AddpatientComponent implements OnInit {
         Validators.required,
         Validators.pattern(/[0-9]/)
       ]],
-      password: ['']
+      password: [''],
+      isAdmin: ['']
     });
   }
 
-  /** Обозначаем действие onsubmit reset*/
+  /* Обозначаем действие onsubmit reset*/
   reset() {
-    this.router.navigateByUrl('/patients')
-  };
+    this.router.navigateByUrl('/admin/patients');
+  }
 
   onsubmit() {
     const controls = this.PatientsForm.controls;
 
-    /** Проверяем форму  */
+    /* Проверяем форму  */
     if (this.PatientsForm.invalid) {
-      /** Если форма не валидна, то помечаем все как touched*/
+      /*Если форма не валидна, то помечаем все как touched*/
       Object.keys(controls)
         .forEach(controlName => controls[controlName].markAsTouched());
 
-      /** Прерываем выполнение метода*/
+      /* Прерываем выполнение метода*/
       return;
     }
-    /** Обработка данных формы */
+    /* Обработка данных формы */
     console.log(this.PatientsForm.value);
     this.patientsService.addPatients(this.PatientsForm.value)
       .subscribe();
 
-  };
+  }
 
 }
 

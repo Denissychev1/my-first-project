@@ -1,15 +1,18 @@
 <html>
-
-<body>
-<form class="px-4 py-3" [formGroup]="PatientForm" (submit)="clikButton()">
-  <div class="form-group" ng-controller="Controller">
+<body >
+<div style=" text-align: center;">
+  <h1>Авторизуйтесь</h1>
+</div>
+<form [formGroup]="PatientForm" (submit)="clikButton()">
+  <div  class="form-group" ng-controller="Controller">
     <label >Имя</label>
-    <input type="email" class="form-control" formControlName="id"   placeholder="Имя">
+    <p><input type="email" class="form-control" formControlName="id"   placeholder="Введите Имя"></p>
   </div>
+
   <div class="form-group">
 
     <label>Пароль</label>
-    <input type="password" class="form-control" formControlName="password"  placeholder="Пароль">
+    <p><input type="password" class="form-control" formControlName="password"  placeholder="Введите Пароль"></p>
   </div>
   <button type="submit" class="btn btn-primary">Вход</button>
 </form>
