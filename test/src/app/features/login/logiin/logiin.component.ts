@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {AuthService} from '../../auth.service';
+
 @Component({
   selector: 'app-logiin',
   templateUrl: './logiin.component.html',
@@ -10,8 +11,9 @@ import {AuthService} from '../../auth.service';
 export class LogiinComponent implements OnInit {
 
 
-  constructor(private router: Router,  private fb: FormBuilder, private authenticationService: AuthService) {
+  constructor(private router: Router, private fb: FormBuilder, private authenticationService: AuthService) {
   }
+
   PatientForm: FormGroup;
 
 
@@ -22,15 +24,16 @@ export class LogiinComponent implements OnInit {
   initForm() {
     this.PatientForm = this.fb.group({
       id: ['', [
-      Validators.required,
-      Validators.pattern(/[0-9]/)
-    ]],
+        Validators.required,
+        Validators.pattern(/[0-9]/)
+      ]],
       password: ['', [
         Validators.required,
         Validators.pattern(/[0-9]/)
       ]],
     });
   }
+
   clikButton() {
     const controls = this.PatientForm.controls;
 
@@ -45,7 +48,11 @@ export class LogiinComponent implements OnInit {
     }
 
     this.authenticationService.login(this.PatientForm.value).subscribe(data => {
-      this.router.navigate(['/user/lk']);
+      if (data === false) {
+        this.router.navigate(['/user/lk']);
+      } else {
+        this.router.navigate(['/admin']);
+      }
     });
     this.authenticationService.isLoggedIn = true;
   }

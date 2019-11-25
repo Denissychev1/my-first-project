@@ -59,13 +59,12 @@ exports.auth = async (req, res) => {
   const user = await Patients.findOne({
     where: {
       id: id,
-      password: password
+      password: password,
     }
   });
-  if (user) { if (user.isAdmin === true){res.send(true)}
-  else {res.send(false)}
-  }
-  else {
+  if (user) {
+    res.status(200).send(user.isAdmin);
+  } else {
     res.status(401).send('invalid');
   }
 };
