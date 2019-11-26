@@ -18,7 +18,7 @@ const Imit = sequelize.define("imitations", {
   }
 });
 
-Imit.hasMany(Questions);
+Imit.hasMany(Questions, {onDelete:"cascade"});
 Imit.belongsToMany(patients, {through: completion});
 
 module.exports = Imit;

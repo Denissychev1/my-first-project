@@ -15,6 +15,6 @@ const Questions = sequelize.define("questions", {
     allowNull: false
   },
 });
-Questions.hasMany(Answers);
+Questions.hasMany(Answers, {onDelete:"cascade"});
 
 module.exports = Questions;
