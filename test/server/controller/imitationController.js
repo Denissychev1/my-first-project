@@ -1,4 +1,4 @@
-const Imitations = require('../db/tests');
+const Imitations = require('../db/imitations');
 
 exports.getImitations = (req, res) => {
   Imitations.findAll({raw: true}).then(data => {
