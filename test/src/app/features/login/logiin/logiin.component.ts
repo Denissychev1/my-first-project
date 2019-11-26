@@ -48,6 +48,7 @@ export class LogiinComponent implements OnInit {
     }
 
     this.authenticationService.login(this.PatientForm.value).subscribe(data => {
+      // @ts-ignore
       if (data === false) {
         this.router.navigate(['/user/lk']);
       } else {

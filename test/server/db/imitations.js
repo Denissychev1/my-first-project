@@ -1,6 +1,9 @@
 const db = require('./db.config');
 const sequelize = db.sequelize;
 const Sequelize = db.Sequelize;
+const Questions =require('./questions');
+const patients = require("./patients");
+const completion = require('./completion');
 
 const Imit = sequelize.define("imitations", {
   id: {
@@ -10,18 +13,12 @@ const Imit = sequelize.define("imitations", {
     allowNull: false
   },
   name: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     allowNull: false
-  },
-  question: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  answers: {
-    type: Sequelize.INTEGER,
-    allowNull: false
-  },
+  }
 });
 
+Imit.hasMany(Questions);
+Imit.belongsToMany(patients, {through: completion});
 
 module.exports = Imit;

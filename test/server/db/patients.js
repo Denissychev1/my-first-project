@@ -1,6 +1,8 @@
 const db = require('./db.config');
 const sequelize = db.sequelize;
 const Sequelize = db.Sequelize;
+const imitations = require('./imitations');
+const completion = require('./completion')
 
 const Patients = sequelize.define('patients', {
   id: {
@@ -30,6 +32,6 @@ const Patients = sequelize.define('patients', {
   },
   isAdmin:{type: Sequelize.BOOLEAN}
 });
-
+Patients.belongsToMany(imitations,{through:completion});
 module.exports = Patients;
 
