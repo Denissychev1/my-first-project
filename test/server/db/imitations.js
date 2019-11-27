@@ -5,20 +5,19 @@ const Questions =require('./questions');
 const patients = require("./patients");
 const completion = require('./completion');
 
-const Imit = sequelize.define("imitations", {
-  id: {
-    type: Sequelize.INTEGER,
-    autoIncrement: true,
-    primaryKey: true,
-    allowNull: false
+module.exports = {up: (queryInterface, Sequelize) => {
+    return queryInterface.createTable('imitations', {
+      id: { type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+        allowNull: false},
+      name: {
+        type: Sequelize.STRING,
+        allowNull: false
+      }
+    });
   },
-  name: {
-    type: Sequelize.TEXT,
-    allowNull: false
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.dropTable('imitations');
   }
-});
-
-Imit.hasMany(Questions, {onDelete:"cascade"});
-Imit.belongsToMany(patients, {through: completion});
-
-module.exports = Imit;
+};

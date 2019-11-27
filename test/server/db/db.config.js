@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+
 const sequelize = new Sequelize('Patients', 'postgres', '12345', {
   dialect: 'postgres',
   host: 'localhost',
