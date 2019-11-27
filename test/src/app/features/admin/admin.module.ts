@@ -10,6 +10,7 @@ import {NgbButtonsModule, NgbDropdownModule, NgbProgressbarModule} from '@ng-boo
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {TestsComponent} from './tests/tests.component';
+import { ImitationeditComponent } from './imitationedit/imitationedit.component';
 
 
 
@@ -20,6 +21,7 @@ import {TestsComponent} from './tests/tests.component';
     PatientsComponent,
     AddpatientComponent,
     AddimitationComponent,
+    ImitationeditComponent,
   ],
   imports: [
     CommonModule,

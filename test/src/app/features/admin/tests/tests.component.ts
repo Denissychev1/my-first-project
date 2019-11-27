@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {Imitation} from '../../models/imitations';
+import {ImitationsService} from '../../services/imitations.service';
 
 @Component({
   selector: 'app-tests',
@@ -8,11 +10,11 @@ import {Router} from '@angular/router';
 })
 export class TestsComponent implements OnInit {
   model: 1;
-
-  constructor(private router: Router) {
+ id: number;
+  constructor(private router: Router, private Imitationservice: ImitationsService) {
   }
-
-  ngOnInit() {
+  imitations: Imitation[];
+  ngOnInit() {    this.Imitationservice.getImitations().subscribe(Imitations => this.imitations = Imitations);
   }
 
   clickButton() {
@@ -21,5 +23,11 @@ export class TestsComponent implements OnInit {
 
   clicButton() {
     this.router.navigateByUrl('/admin');
+  }
+  edit() {
+    this.router.navigateByUrl('/admin/edit');
+  }
+  send() {
+    this.Imitationservice.sendImitations(this.imitations.id).subscribe(data => alert(data));
   }
 }

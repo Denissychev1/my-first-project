@@ -6,8 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     underscored: true,
   });
   imitation.associate = function(models) {
-    imitation.belongsToMany(models.Patient,{through: 'completion', foreignKey: 'imitationId'});
-    imitation.hasMany(models.Question);
+    imitation.belongsToMany(models.patient,{through: 'completion', foreignKey: 'imitation_id'});
+    imitation.hasMany(models.question);
   };
   return imitation;
 };

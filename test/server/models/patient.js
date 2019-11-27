@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  const Patient = sequelize.define('Patient', {
+  const Patient = sequelize.define('patient', {
     firstname: {
       type: DataTypes.STRING,
       allowNull: false
@@ -12,12 +12,12 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     isAdmin: DataTypes.BOOLEAN
   }, {
-    underscored: true,
+    underscored: true
   });
   Patient.associate = function (models) {
     Patient.belongsToMany(models.imitation, {
       through: 'completion',
-      foreignKey: 'patientId'
+      foreignKey: 'patient_id'
     })
   };
   return Patient;

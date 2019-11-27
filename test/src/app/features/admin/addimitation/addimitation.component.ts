@@ -15,6 +15,6 @@ export class AddimitationComponent implements OnInit {
   }
 
   reset() {
-    this.router.navigateByUrl('/tests');
+    this.router.navigateByUrl('/admin/tests');
   }
 }

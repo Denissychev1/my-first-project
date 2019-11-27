@@ -5,6 +5,7 @@ import {PatientsComponent} from './patients/patients.component';
 import {AddpatientComponent} from './addpatient/addpatient.component';
 import {AddimitationComponent} from './addimitation/addimitation.component';
 import {TestsComponent} from './tests/tests.component';
+import {ImitationeditComponent} from './imitationedit/imitationedit.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
    {path: 'tests', component: TestsComponent},
    {path: 'addpatient', component: AddpatientComponent},
    {path: 'addimitation', component: AddimitationComponent},
+  {path: 'edit', component: ImitationeditComponent},
 ];
 
 

@@ -1,12 +1,14 @@
-const Patient = require('../models').Patient;
+const Patient = require('../models').patient;
 
 //show All patients
-exports.getPatients = (req, res) => {
-  Patient.findAll({raw: true}).then(data => {
-    res.send(
-      data
-    );
-  }).catch(err => console.log(err));
+exports.getPatients = async (req, res) => {
+  try {
+    const patients = await Patient.findAll();
+    res.send(patients);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send(err.message);
+  }
 };
 
 // Creation of Patient

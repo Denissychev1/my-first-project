@@ -1,21 +1,28 @@
 <html>
 <body>
 <h1>Здесь располагаются тесты</h1>
-<p>Первый абзац.</p>
-<p>Второй абзац.</p>
-<div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="model">
-  <label ngbButtonLabel class="btn-primary">
-    <input ngbButton type="radio" [value]="true"> 1st variant
-  </label>
-  <label ngbButtonLabel class="btn-primary">
-    <input ngbButton type="radio" [value]="false"> 2nd
-  </label>
-  <label ngbButtonLabel class="btn-primary">
-    <input ngbButton type="radio" [value]="false"> 3rd
-  </label>
-</div>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let imitations of imitations; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td><button (click)="send">{{ imitations.id }}</button></td>
+    <td>{{ imitations.name }}</td>
+    <td><button (click)="edit()">Редактировать</button></td>
+  </tr>
+  </tbody>
+</table>
+
 <p></p>
 <nav>
+  <p><button class="btn btn-outline-dark" (click)="edit()">Редактировать</button></p>
   <p><button class="btn btn-outline-dark" (click)="clickButton()">Добавить имитацию</button></p>
   <p><button class="btn btn-outline-dark" (click)="clicButton()">Назад</button></p>
 </nav>
