@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {Imitation} from '../../models/imitations';
 import {ImitationsService} from '../../services/imitations.service';
 
+
 @Component({
   selector: 'app-tests',
   templateUrl: './tests.component.html',
@@ -10,10 +11,10 @@ import {ImitationsService} from '../../services/imitations.service';
 })
 export class TestsComponent implements OnInit {
   model: 1;
- id: number;
   constructor(private router: Router, private Imitationservice: ImitationsService) {
   }
   imitations: Imitation[];
+  displayedColumns: ['name', 'id'];
   ngOnInit() {    this.Imitationservice.getImitations().subscribe(Imitations => this.imitations = Imitations);
   }
 
@@ -28,6 +29,7 @@ export class TestsComponent implements OnInit {
     this.router.navigateByUrl('/admin/edit');
   }
   send() {
-    this.Imitationservice.sendImitations(this.imitations.id).subscribe(data => alert(data));
+    console.log();
+    this.Imitationservice.sendImitations(this.imitations.values).subscribe(data => alert(data));
   }
 }

@@ -11,6 +11,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {TestsComponent} from './tests/tests.component';
 import { ImitationeditComponent } from './imitationedit/imitationedit.component';
+import {MatTableModule} from '@angular/material';
 
 
 
@@ -31,7 +32,8 @@ import { ImitationeditComponent } from './imitationedit/imitationedit.component'
     NgbProgressbarModule,
     NgbDropdownModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: []
