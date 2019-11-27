@@ -1,4 +1,4 @@
-const Patients = require('../db/patients');
+const Patients = require('../models/patient');
 
 //show All patients
 exports.getPatients = (req, res) => {
