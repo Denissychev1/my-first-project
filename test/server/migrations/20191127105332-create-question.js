@@ -11,12 +11,11 @@ module.exports = {
       text: {
         type: Sequelize.STRING
       },
-      imitationId: {
+      imitation_id: {
         type: Sequelize.INTEGER,
         references: {
           model: {
-            tableName: 'imitation',
-            schema: 'public'
+            tableName: 'imitation'
           },
           key: 'id'
         },

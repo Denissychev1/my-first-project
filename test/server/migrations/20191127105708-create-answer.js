@@ -13,12 +13,11 @@ module.exports = {
       value: {
         type: Sequelize.BOOLEAN
       },
-      questionId: {
+      question_id: {
         type: Sequelize.INTEGER,
         references: {
           model: {
-            tableName: 'question',
-            schema: 'public'
+            tableName: 'question'
           },
           key: 'id'
         },

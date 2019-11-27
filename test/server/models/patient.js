@@ -1,5 +1,5 @@
 'use strict';
-const imitation = require('./imitation');
+
 module.exports = (sequelize, DataTypes) => {
   const Patient = sequelize.define('Patient', {
     firstname: {
@@ -14,8 +14,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     underscored: true,
   });
-  Patient.associate = function (models) { Patient.belongsToMany(imitation,{through: 'completion', foreignKey: 'patientId'})
-    // associations can be defined here
+  Patient.associate = function (models) {
+    Patient.belongsToMany(models.imitation, {
+      through: 'completion',
+      foreignKey: 'patientId'
+    })
   };
   return Patient;
 };

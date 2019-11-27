@@ -1,8 +1,8 @@
-const Patients = require('../models/patient');
+const Patient = require('../models').Patient;
 
 //show All patients
 exports.getPatients = (req, res) => {
-  Patients.findAll({raw: true}).then(data => {
+  Patient.findAll({raw: true}).then(data => {
     res.send(
       data
     );
@@ -13,7 +13,7 @@ exports.getPatients = (req, res) => {
 exports.create = async (req, res) => {
   try {
     // Save to PostgreSQL database
-    let patient = await Patients.create(req.body);
+    let patient = await Patient.create(req.body);
     // Send created pat to cl
     res.status(201).json(patient);
   } catch (err) {
@@ -25,7 +25,7 @@ exports.create = async (req, res) => {
 // Delete a Patient by Id
 exports.delete = (req, res) => {
   const id = req.query.id;
-  Patients.destroy({
+  Patient.destroy({
     where: {id: id}
   }).then(() => {
     res.status(200).json({msg: 'Deleted Successfully. Patient Id = ' + id});
@@ -38,7 +38,7 @@ exports.delete = (req, res) => {
 // Find a Patient by name
 exports.findById = (req, res) => {
   const id = req.query.id;
-  Patients.findByPk(id).then(patient => {
+  Patient.findByPk(id).then(patient => {
     res.json(patient);
   }).catch(err => {
     console.log(err);
@@ -56,7 +56,7 @@ exports.auth = async (req, res) => {
     return;
   }
 
-  const user = await Patients.findOne({
+  const user = await Patient.findOne({
     where: {
       id: id,
       password: password,

@@ -11,23 +11,21 @@ module.exports = {
       score: {
         type: Sequelize.INTEGER
       },
-      imitationId: {
+      imitation_id: {
         type: Sequelize.INTEGER,
         references: {
           model: {
-            tableName: 'imitation',
-            schema: 'public'
+            tableName: 'imitation'
           },
           key: 'id'
         },
         allowNull:false,
       },
-      patientId: {
+      patient_id: {
         type: Sequelize.INTEGER,
         references: {
           model: {
-            tableName: 'patient',
-            schema: 'public'
+            tableName: 'patient'
           },
           key: 'id'
         },
