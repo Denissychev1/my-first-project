@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "postgres",
-    "password": "12345",
-    "database": "Patients",
-    "host": "127.0.0.1",
+    "password": "ZAQ12ws",
+    "database": "imitation",
+    "host": "bm-dev.infoenergo.loc",
     "dialect": "postgres",
     "define": {
       "freezeTableName": true,

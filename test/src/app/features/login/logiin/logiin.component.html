@@ -3,19 +3,27 @@
 <div style=" text-align: center;">
   <h1>Авторизуйтесь</h1>
 </div>
+<mat-card>
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
 <form [formGroup]="PatientForm" (submit)="clikButton()">
-  <div  class="form-group" ng-controller="Controller">
-    <label >Имя</label>
-    <p><input type="email" class="form-control" formControlName="id"   placeholder="Введите Имя"></p>
-  </div>
+  <p>
 
-  <div class="form-group">
+    <mat-form-field>
+      <input type="text"  matInput placeholder="Name" formControlName="id">
+    </mat-form-field>
+  </p>
 
-    <label>Пароль</label>
-    <p><input type="password" class="form-control" formControlName="password"  placeholder="Введите Пароль"></p>
-  </div>
+  <p>
+    <mat-form-field>
+      <input type="password"  matInput placeholder="Password" formControlName="password">
+    </mat-form-field>
+  </p>
+
   <button type="submit" class="btn btn-primary">Вход</button>
 </form>
+  </mat-card-content>
+</mat-card>
 
 </body>
 </html>

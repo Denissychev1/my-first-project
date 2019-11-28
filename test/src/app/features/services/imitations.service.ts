@@ -7,7 +7,7 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class ImitationsService {
-  private ImitationUrl = '/api/im';
+  private ImitationUrl = '/api/imitations' ;
 
   constructor(private http: HttpClient) {
   }

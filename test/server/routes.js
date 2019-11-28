@@ -15,17 +15,17 @@ router.get('/patients', patients.getPatients);
 router.get('/patients/:id', patients.findById);
 
 //auth
-router.post('/qwe', patients.auth);
-router.get('/qwe', patients.findById);
+router.post('/patients', patients.auth);
+router.get('/patients', patients.findById);
 
 // Delete a Customer with Id
 router.delete('/patients', patients.delete);
 
 //Create new IMITATION
-router.post('/im', imitations.create);
+router.post('/imitations', imitations.create);
 
 //Showing all IMITATIONS
-router.get('/im', imitations.getImitations);
+router.get('/imitations', imitations.getImitations);
 
 //Showing all questions
 router.get('/questions', questions.findQuestions);

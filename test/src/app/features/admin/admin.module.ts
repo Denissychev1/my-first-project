@@ -11,7 +11,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {TestsComponent} from './tests/tests.component';
 import { ImitationeditComponent } from './imitationedit/imitationedit.component';
-import {MatTableModule} from '@angular/material';
+import {MatCheckboxModule, MatTableModule} from '@angular/material';
 
 
 
@@ -33,7 +33,8 @@ import {MatTableModule} from '@angular/material';
     NgbDropdownModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: []

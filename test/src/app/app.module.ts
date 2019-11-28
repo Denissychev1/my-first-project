@@ -9,6 +9,9 @@ import {HttpClientModule} from '@angular/common/http';
 import {UserModule} from './features/user/user.module';
 import {AdminModule} from './features/admin/admin.module';
 import {LoginModule} from './features/login/login.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+
 
 
 @NgModule({
@@ -24,9 +27,10 @@ import {LoginModule} from './features/login/login.module';
     NgbDropdownModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AdminModule.forRoot(),
-    UserModule.forRoot(),
-    LoginModule.forRoot()
+    AdminModule,
+    UserModule,
+    LoginModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
