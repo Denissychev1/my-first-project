@@ -23,10 +23,7 @@ export class LogiinComponent implements OnInit {
 
   initForm() {
     this.PatientForm = this.fb.group({
-      id: ['', [
-        Validators.required,
-        Validators.pattern(/[0-9]/)
-      ]],
+      id: [''],
       password: ['', [
         Validators.required,
         Validators.pattern(/[0-9]/)

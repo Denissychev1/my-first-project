@@ -12,7 +12,7 @@ export class AuthService {
   }
 
   login(value: any) {
-   return this.http.post<Login>('/api/patients', {value});
+   return this.http.post<Login>('/api/auth', {value});
   }
   logout() {
     // remove user from local storage to log user out

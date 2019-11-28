@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
   const Patient = sequelize.define('patient', {
     firstname: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull:false
     },
     lastname: DataTypes.STRING,
     age: DataTypes.INTEGER,

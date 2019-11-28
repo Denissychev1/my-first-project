@@ -15,8 +15,8 @@ router.get('/patients', patients.getPatients);
 router.get('/patients/:id', patients.findById);
 
 //auth
-router.post('/patients', patients.auth);
-router.get('/patients', patients.findById);
+router.post('/auth', patients.auth);
+router.get('/auth', patients.findById);
 
 // Delete a Customer with Id
 router.delete('/patients', patients.delete);
