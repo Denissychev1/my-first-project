@@ -18,6 +18,7 @@ export class TestsComponent implements OnInit {
   dataSource = new MatTableDataSource<Imitation>(this.imitations);
   selection = new SelectionModel<Imitation>(false, []);
   displayedColumns: string[] = ['select', 'id', 'name'];
+
   ngOnInit() {    this.Imitationservice.getImitations().subscribe(Imitations => this.imitations = Imitations);
   }
 
@@ -34,7 +35,6 @@ export class TestsComponent implements OnInit {
       this.selection.clear() :
       this.dataSource.data.forEach(row => this.selection.select(row));
   }
-
   /** The label for the checkbox on the passed row */
   checkboxLabel(row?: Imitation): string {
     if (!row) {
@@ -47,14 +47,12 @@ export class TestsComponent implements OnInit {
     this.router.navigateByUrl('/admin/addimitation');
   }
 
+
   clicButton() {
     this.router.navigateByUrl('/admin');
   }
   edit() {
-    this.router.navigateByUrl('/admin/edit');
-  }
-  send() {
     console.log();
-    this.Imitationservice.sendImitations(this.imitations.values).subscribe(data => alert(data));
+
   }
 }

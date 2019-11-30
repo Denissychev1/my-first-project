@@ -29,7 +29,7 @@ router.get('/imitations', imitations.getImitations);
 
 //Showing all questions
 router.get('/questions', questions.findQuestions);
-
+router.post('/questions', questions.findQuestions);
 //Showing all answers
 router.get('/answers',answers.findAnswer);
 
