@@ -10,7 +10,7 @@ import {UserModule} from './features/user/user.module';
 import {AdminModule} from './features/admin/admin.module';
 import {LoginModule} from './features/login/login.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import {MatDialogModule} from '@angular/material';
 
 
 
@@ -32,6 +32,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     UserModule,
     LoginModule,
     BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
