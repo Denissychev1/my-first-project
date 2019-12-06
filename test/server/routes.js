@@ -32,7 +32,7 @@ router.get('/questions', questions.findQuestions);
 router.post('/questions', questions.findQuestions);
 //Showing all answers
 router.get('/answers',answers.findAnswer);
-
+router.post('/answers',answers.findAnswer);
 
 
 // Delete a Customer with Id

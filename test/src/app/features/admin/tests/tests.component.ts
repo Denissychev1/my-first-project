@@ -25,8 +25,8 @@ export class TestsComponent implements OnInit {
   questions: Question[];
   imitations: Imitation[];
   dataSource = new MatTableDataSource<Imitation>(this.imitations);
-  selection = new SelectionModel<Imitation>(false, []);
-  displayedColumns: string[] = ['select', 'id', 'name', 'createdAt', 'updatedAt'];
+  selection = new SelectionModel<Imitation>(true, []);
+  displayedColumns: string[] = ['id', 'name'];
 
   ngOnInit() {
     this.Imitationservice.getImitations().subscribe(Imitations => this.imitations = Imitations);

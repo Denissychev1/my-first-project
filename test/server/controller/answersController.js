@@ -1,5 +1,5 @@
+const Questions = require('../models').question;
 const Answers = require('../models').answer;
-const Question =require('../models').question;
 
 exports.getAnswer = (req, res) => {
   Answers.findAll({raw: true}).then(data => {
@@ -13,8 +13,8 @@ exports.findAnswer = async (req, res) => {
   if (!id) {
     return res.status(400).send('Не передан параметр id');
   }
-  const question = await Question.findByPk(id);
-  const questions = await question.getAnswers();
-  res.send(questions);
+  const questions = await Questions.findByPk(id);
+  const answers = await questions.getAnswers();
+  res.send(answers);
 };
 

@@ -1,26 +1,39 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialogRef, MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 import {Question} from '../../models/questions';
+import {animate, state, style, transition, trigger} from '@angular/animations';
+import {AnswersService} from '../../services/answers/answers.service';
+import {Answers} from '../../models/answers';
+import {AnswereditComponent} from '../answeredit/answeredit.component';
 
 @Component({
   selector: 'app-imitationedit',
   templateUrl: './imitationedit.component.html',
-  styleUrls: ['./imitationedit.component.scss']
+  styleUrls: ['./imitationedit.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class ImitationeditComponent implements OnInit {
   description: any;
   dataSource = new MatTableDataSource<Question>(this.description);
   selection = new SelectionModel<Question>(false, []);
-  displayedColumns: string[] = ['select', 'id', 'name'];
-
+  displayedColumns: string[] = ['id', 'name', 'imitationId'];
+  selected = 0;
+  answers: Answers[];
   constructor(
     public dialogRef: MatDialogRef<ImitationeditComponent>,
-    @Inject(MAT_DIALOG_DATA) data: any) { this.description = data; }
+    @Inject(MAT_DIALOG_DATA) data: any, private answerService: AnswersService, public dialog: MatDialog) { this.description = data; }
 
   onNoClick(): void {
     this.dialogRef.close();
+    console.log(this.answers);
   }
   ngOnInit() {console.log(this.description);
   }
@@ -45,5 +58,17 @@ export class ImitationeditComponent implements OnInit {
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
-
+  selectRow(row) {
+    this.selected = row.id;
+    this.answerService.getAnswers(this.selected).subscribe(data => this.answers = data);
+  }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AnswereditComponent, {
+        width: '700px',
+        height: '700px',
+        data: this.answers,
+      }
+    );
+    dialogRef.afterClosed();
+  }
 }
