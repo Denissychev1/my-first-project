@@ -34,7 +34,11 @@ router.post('/questions', questions.findQuestions);
 router.get('/answers',answers.findAnswer);
 router.post('/answers',answers.findAnswer);
 
+//Creating new question
+router.post('/questionCreate', questions.create);
 
+//Creating new answer
+router.post('/answerCreate', answers.create);
 // Delete a Customer with Id
 router.delete('/im', imitations.delete);
 

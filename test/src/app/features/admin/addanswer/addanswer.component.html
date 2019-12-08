@@ -1,0 +1,14 @@
+<div ng-controller="Controller">
+  <form [formGroup]="AnswerForm">
+    <label>Введите номер: <input type="text" formControlName="id"/></label><br />
+    <label>Введите имя: <input type="text" formControlName="text"></label><br />
+    <label>Является ли администратором: <input type="checkbox" formControlName="value" value="true" /></label><br />
+    <input type="button" (click)="onsubmit()" value="Добавить" />
+    <input type="button" (click)="onNoClick()"value="Назад" />
+  </form>
+</div>
+
+
+<div>
+  {{AnswerForm.value | json}}
+</div>

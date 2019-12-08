@@ -18,3 +18,16 @@ exports.findQuestions = async (req, res) => {
   const questions = await imitation.getQuestions();
   res.send(questions);
 };
+
+// Creation of question
+exports.create = async (req, res) => {
+  try {
+    // Save to PostgreSQL database
+    let question = await Question.create(req.body);
+    // Send created pat to cl
+    res.status(201).json(question);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({msg: "error", details: err});
+  }
+};

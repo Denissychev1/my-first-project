@@ -12,8 +12,9 @@ import {HttpClientModule} from '@angular/common/http';
 import {TestsComponent} from './tests/tests.component';
 import { ImitationeditComponent } from './imitationedit/imitationedit.component';
 import {MatButtonModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatTableModule} from '@angular/material';
-import { QuestioneditComponent } from './questionedit/questionedit.component';
 import { AnswereditComponent } from './answeredit/answeredit.component';
+import { AddquestionComponent } from './addquestion/addquestion.component';
+import { AddanswerComponent } from './addanswer/addanswer.component';
 
 
 
@@ -25,8 +26,9 @@ import { AnswereditComponent } from './answeredit/answeredit.component';
     AddpatientComponent,
     AddimitationComponent,
     ImitationeditComponent,
-    QuestioneditComponent,
     AnswereditComponent,
+    AddquestionComponent,
+    AddanswerComponent,
   ],
   imports: [
     CommonModule,
@@ -44,7 +46,7 @@ import { AnswereditComponent } from './answeredit/answeredit.component';
     MatInputModule,
     MatButtonModule
   ],
-  entryComponents: [AnswereditComponent],
+  entryComponents: [AnswereditComponent, AddanswerComponent, AddquestionComponent],
   providers: [],
   bootstrap: []
 })

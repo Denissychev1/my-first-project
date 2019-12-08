@@ -7,6 +7,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 import {AnswersService} from '../../services/answers/answers.service';
 import {Answers} from '../../models/answers';
 import {AnswereditComponent} from '../answeredit/answeredit.component';
+import {AddquestionComponent} from '../addquestion/addquestion.component';
 
 @Component({
   selector: 'app-imitationedit',
@@ -68,7 +69,18 @@ export class ImitationeditComponent implements OnInit {
         height: '700px',
         data: this.answers,
       }
-    );
+    )
+    ;
+    dialogRef.afterClosed();
+  }
+  open(): void {
+    const dialogRef = this.dialog.open(AddquestionComponent, {
+        width: '700px',
+        height: '700px',
+        data: this.answers,
+      }
+      )
+    ;
     dialogRef.afterClosed();
   }
 }

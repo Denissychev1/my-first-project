@@ -15,4 +15,10 @@ export class AnswersService {
       .set('id', String(id));
     return this.http.get<Answers[]>(this.AnswersUrl, {params});
   }
+  addAnswers(id: number, answer: Answers): Observable<Answers> {
+    console.log(answer);
+    const params = new HttpParams()
+      .set('id', String(id));
+    return this.http.post<Answers>(this.AnswersUrl, answer, {params});
+  }
 }
