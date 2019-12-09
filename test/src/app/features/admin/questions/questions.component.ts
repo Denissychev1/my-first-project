@@ -8,6 +8,7 @@ import {AnswersService} from '../../services/answers/answers.service';
 import {Answers} from '../../models/answers';
 import {AnswereditComponent} from '../answeredit/answeredit.component';
 import {AddquestionComponent} from '../addquestion/addquestion.component';
+import {QuestionsService} from '../../services/questions/questions.service';
 
 @Component({
   selector: 'app-imitationedit',
@@ -32,7 +33,8 @@ export class ImitationeditComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ImitationeditComponent>,
-    @Inject(MAT_DIALOG_DATA) data: any, private answerService: AnswersService, public dialog: MatDialog) {
+    @Inject(MAT_DIALOG_DATA) data: any, private answerService: AnswersService, private questionService: QuestionsService,
+    public dialog: MatDialog) {
     this.description = data.questions;
     this.qq = data.id;
   }
@@ -70,9 +72,6 @@ export class ImitationeditComponent implements OnInit {
   selectRow(row) {
     this.selected = row.id;
     this.answerService.getAnswers(this.selected).subscribe(data => this.answers = data);
-  }
-
-  openDialog(): void {
     const dialogRef = this.dialog.open(AnswereditComponent, {
         width: '700px',
         height: '700px',
@@ -95,5 +94,9 @@ export class ImitationeditComponent implements OnInit {
       )
     ;
     dialogRef.afterClosed().subscribe();
+  }
+
+  delete() {
+    this.questionService.deleteQuestion(this.selected).subscribe(data => console.log(data));
   }
 }

@@ -43,6 +43,14 @@
 table {
   width: 100%;
 }
-.selectRow { background: #42A948; }
+.link_tag {
+  cursor: default;
+}
+
+.mat-row:hover {
+  cursor: default;
+  background-color: gray;
+}
+
 
 

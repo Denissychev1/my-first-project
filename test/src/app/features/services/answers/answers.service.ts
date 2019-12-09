@@ -22,4 +22,9 @@ export class AnswersService {
     const params = this.param;
     return this.http.post<Answers>(this.AnswersUrl, answer, {params});
   }
+  deleteAnswer(id: any) {
+    const params = new HttpParams()
+      .set('id', id);
+    return this.http.delete(this.AnswersUrl, {params});
+  }
 }

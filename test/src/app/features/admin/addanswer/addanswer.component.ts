@@ -50,6 +50,7 @@ export class AddanswerComponent implements OnInit {
     console.log(this.AnswerForm.value);
     this.AnswerService.addAnswers(this.AnswerForm.value)
       .subscribe();
+    this.dialogRef.close();
   }
 
   onNoClick(): void {

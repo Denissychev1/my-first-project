@@ -31,3 +31,15 @@ exports.create = async (req, res) => {
     res.status(500).json({msg: "error", details: err});
   }
 };
+
+exports.delete = (req, res) => {
+  const id = req.query.id;
+  Question.destroy({
+    where: { id: id }
+  }).then(() => {
+    res.status(200).json( { msg: 'Deleted Successfully. Question Id = ' + id } );
+  }).catch(err => {
+    console.log(err);
+    res.status(500).json({msg: "error", details: err});
+  });
+};

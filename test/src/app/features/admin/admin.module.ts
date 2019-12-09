@@ -11,10 +11,19 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {TestsComponent} from './tests/tests.component';
 import { ImitationeditComponent } from './questions/questions.component';
-import {MatButtonModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatTableModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCheckboxModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSortModule,
+  MatTableModule
+} from '@angular/material';
 import { AnswereditComponent } from './answeredit/answeredit.component';
 import { AddquestionComponent } from './addquestion/addquestion.component';
 import { AddanswerComponent } from './addanswer/addanswer.component';
+
 
 
 
@@ -44,7 +53,8 @@ import { AddanswerComponent } from './addanswer/addanswer.component';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSortModule,
   ],
   entryComponents: [AnswereditComponent, AddanswerComponent, AddquestionComponent],
   providers: [],

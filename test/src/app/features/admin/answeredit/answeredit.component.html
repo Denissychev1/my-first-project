@@ -25,12 +25,14 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectRow(row)">>
     </tr>
   </table>
   <p></p>
   <button class="btn btn-outline-dark" (click)="onNoClick()">OK!</button>
   <button class="btn btn-outline-dark" (click)="onClick()">Добавить ответ</button>
+  <button class="btn btn-outline-dark" (click)="delete()">Удалить ответ</button>
+
 </div>
 </body>
 </html>

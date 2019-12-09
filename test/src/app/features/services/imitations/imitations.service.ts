@@ -1,14 +1,14 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Imitation} from '../../models/imitations';
-import {HttpClient} from '@angular/common/http';
-import {Pat} from '../../models/pat';
+import {HttpClient, HttpParams} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ImitationsService {
-  private ImitationUrl = '/api/imitations' ;
+  private ImitationUrl = '/api/imitations';
+  id: number;
 
   constructor(private http: HttpClient) {
   }
@@ -16,8 +16,15 @@ export class ImitationsService {
   getImitations(): Observable<Imitation[]> {
     return this.http.get<Imitation[]>(this.ImitationUrl);
   }
+
   addImitation(imitations: Imitation): Observable<Imitation> {
     console.log(imitations);
     return this.http.post<Imitation>(this.ImitationUrl, imitations);
+  }
+
+  deleteImitation(id: any) {
+    const params = new HttpParams()
+      .set('id', id);
+    return this.http.delete(this.ImitationUrl, {params});
   }
 }

@@ -8,20 +8,20 @@ exports.getImitations = (req, res) => {
   }).catch(err => console.log(err));
 };
 
-// Creation of Patient
+// Creation of Imitation
 exports.create = (req, res) => {
   // Save to PostgreSQL database
   Imitations.create(req.body).then(imitation => {
-    // Send created pat to cl
+    // Send created pat to cli
     res.status(201).json(imitation);
   }).catch(err => {
     console.log(err);
     res.status(500).json({msg: "error", details: err});
   });
 };
-// Delete a Patient by Id
+// Delete a by Id
 exports.delete = (req, res) => {
-  const id = req.params.id;
+  const id = req.query.id;
   Imitations.destroy({
     where: { id: id }
   }).then(() => {

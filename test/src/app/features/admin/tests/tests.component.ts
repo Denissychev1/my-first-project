@@ -22,11 +22,12 @@ export class TestsComponent implements OnInit {
               public dialog: MatDialog) {
   }
   selectedId = 0;
+  MouseIndex = -1;
   questions: Question[];
   imitations: Imitation[];
   dataSource = new MatTableDataSource<Imitation>(this.imitations);
   selection = new SelectionModel<Imitation>(true, []);
-  displayedColumns: string[] = ['id', 'name'];
+  displayedColumns: string[] = ['id', 'name', 'events'];
 
   ngOnInit() {
     this.Imitationservice.getImitations().subscribe(Imitations => this.imitations = Imitations);
@@ -68,17 +69,20 @@ export class TestsComponent implements OnInit {
   selectRow(row) {
     this.selectedId = row.id;
     this.questionService.getQuestions(this.selectedId).subscribe(data => this.questions = data);
-  }
-  openDialog(): void {
     const dialogRef = this.dialog.open(ImitationeditComponent, {
-      width: '700px',
-      height: '700px',
-      data: {questions: this.questions,
-        id: this.selectedId}
-  }
-  );
+        width: '700px',
+        height: '700px',
+        data: {questions: this.questions,
+          id: this.selectedId}
+      }
+    );
     dialogRef.afterClosed();
   }
-
+  deleteRow() {
+    this.Imitationservice.deleteImitation(this.selectedId).subscribe();
+  }
+  onMouseOver(index) {
+    this.MouseIndex = index;
+  }
 }
 

@@ -47,6 +47,7 @@ export class AddquestionComponent implements OnInit {
     /* Обработка данных формы */
     this.questionService.addQuestion(this.QuestionForm.value)
       .subscribe();
+    this.dialogRef.close();
   }
 
   onNoClick(): void {

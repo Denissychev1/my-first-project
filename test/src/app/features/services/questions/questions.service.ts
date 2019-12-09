@@ -22,4 +22,9 @@ export class QuestionsService {
     console.log(question);
     return this.http.post<Question>(this.QuestionUrl, question);
   }
+  deleteQuestion(id: any) {
+    const params = new HttpParams()
+      .set('id', id);
+    return this.http.delete(this.QuestionUrl, {params});
+  }
 }

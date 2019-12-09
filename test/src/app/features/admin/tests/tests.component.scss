@@ -1,13 +1,18 @@
 h1, h2{color:navy;}
 p{font-size:13px;}
 :host {
-  font-family: Verdana;
+  font-family: Verdana, serif;
   color: #555;
 }
 table {
   width: 100%;
 }
-tr.example-element-row:not(.row):active {
-  background: #efefef;
+
+.link_tag {
+  cursor: default;
 }
-th.no:active{  background-color: green !important;}
+
+.mat-row:hover {
+  cursor: default;
+  background-color: gray;
+}

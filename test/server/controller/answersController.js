@@ -31,4 +31,16 @@ exports.create = async (req, res) => {
   }
 };
 
+exports.delete = (req, res) => {
+  const id = req.query.id;
+  Answers.destroy({
+    where: { id: id }
+  }).then(() => {
+    res.status(200).json( { msg: 'Deleted Successfully. Answers Id = ' + id } );
+  }).catch(err => {
+    console.log(err);
+    res.status(500).json({msg: "error", details: err});
+  });
+};
+
 

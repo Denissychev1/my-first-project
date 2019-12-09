@@ -30,14 +30,15 @@ router.get('/imitations', imitations.getImitations);
 //Showing all questions
 router.get('/questions', questions.findQuestions);
 router.post('/questions', questions.create);
+router.delete('/questions', questions.delete);
 
 
 //Showing all answers
 router.get('/answers',answers.findAnswer);
 router.post('/answers',answers.create);
+router.delete('/answers',answers.delete);
 
 
-// Delete a Customer with Id
-router.delete('/im', imitations.delete);
+router.delete('/imitations', imitations.delete);
 
 module.exports = router;

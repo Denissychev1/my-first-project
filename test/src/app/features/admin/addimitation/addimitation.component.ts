@@ -45,6 +45,7 @@ export class AddimitationComponent implements OnInit {
     console.log(this.ImitationForm.value);
     this.ImitationService.addImitation(this.ImitationForm.value)
       .subscribe();
+    this.router.navigateByUrl('/admin/tests');
   }
 
   reset() {

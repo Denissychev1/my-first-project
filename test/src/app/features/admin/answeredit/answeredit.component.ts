@@ -1,6 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 import {AddanswerComponent} from '../addanswer/addanswer.component';
+import {HttpParams} from '@angular/common/http';
+import {AnswersService} from '../../services/answers/answers.service';
 
 @Component({
   selector: 'app-answeredit',
@@ -10,10 +12,11 @@ import {AddanswerComponent} from '../addanswer/addanswer.component';
 export class AnswereditComponent implements OnInit {
   qwe: any;
   id: any;
+  selected: any;
   displayedColumns: string[] = ['id', 'text', 'value'];
 
   constructor(public dialogRef: MatDialogRef<AnswereditComponent>,
-              @Inject(MAT_DIALOG_DATA) data: any, public dialog: MatDialog) {
+              @Inject(MAT_DIALOG_DATA) data: any, public dialog: MatDialog, private answerService: AnswersService) {
     this.qwe = data.answers;
     this.id = data.id;
   }
@@ -30,6 +33,12 @@ onClick():
     );
     dialogRef.afterClosed();
 }
+  selectRow(row) {
+    this.selected = row.id;
+  }
+  delete() {
+    this.answerService.deleteAnswer(this.selected).subscribe();
+  }
   onNoClick(): void {
     this.dialogRef.close();
   }

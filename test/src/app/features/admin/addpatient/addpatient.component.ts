@@ -71,6 +71,7 @@ export class AddpatientComponent implements OnInit {
     console.log(this.PatientsForm.value);
     this.patientsService.addPatients(this.PatientsForm.value)
       .subscribe();
+    this.router.navigateByUrl('/admin/patients');
 
   }
 

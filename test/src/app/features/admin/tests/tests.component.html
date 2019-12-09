@@ -3,7 +3,7 @@
 <h1>Здесь располагаются тесты</h1>
 
 
-<table mat-table [dataSource]="imitations" class="mat-elevation-z8">
+<table mat-table [dataSource]="imitations" class="mat-elevation-z8" (mouseleave) = "MouseIndex=-1">
 
   <!-- Checkbox Column -->
   <ng-container matColumnDef="select">
@@ -45,16 +45,22 @@
     <td mat-cell *matCellDef="let imitation"> {{imitation.updatedAt}} </td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-      (click)="selectRow(row)">
+  <tr mat-row *matRowDef="let row;let index = index; columns: displayedColumns;"
+      (click)="selectRow(row)"  (mouseover)="onMouseOver(index)">
   </tr>
+  <ng-container matColumnDef="events">
+    <th mat-header-cell *matHeaderCellDef ></th>
+    <td mat-cell *matCellDef="let imitation; let index = index;">
+      <button id="td_events" *ngIf="MouseIndex === index" style="float: right" (click)="deleteRow()">delete</button>
+    </td>
+  </ng-container>
 </table>
 
 <p></p>
 <nav>
-  <p><button class="btn btn-outline-dark" (click)="openDialog()">Подробнее</button></p>
   <p><button class="btn btn-outline-dark" (click)="clickButton()">Добавить имитацию</button></p>
   <p><button class="btn btn-outline-dark" (click)="clicButton()">Назад</button></p>
+  <p><button class="btn btn-outline-dark" (click)="deleteRow()">Удалить</button></p>
 </nav>
 </body>
 </html>
