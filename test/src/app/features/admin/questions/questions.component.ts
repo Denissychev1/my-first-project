@@ -11,8 +11,8 @@ import {AddquestionComponent} from '../addquestion/addquestion.component';
 
 @Component({
   selector: 'app-imitationedit',
-  templateUrl: './imitationedit.component.html',
-  styleUrls: ['./imitationedit.component.scss'],
+  templateUrl: './questions.component.html',
+  styleUrls: ['./questions.component.scss'],
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({height: '0px', minHeight: '0'})),
@@ -28,16 +28,23 @@ export class ImitationeditComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'imitationId'];
   selected = 0;
   answers: Answers[];
+  qq: any;
+
   constructor(
     public dialogRef: MatDialogRef<ImitationeditComponent>,
-    @Inject(MAT_DIALOG_DATA) data: any, private answerService: AnswersService, public dialog: MatDialog) { this.description = data; }
+    @Inject(MAT_DIALOG_DATA) data: any, private answerService: AnswersService, public dialog: MatDialog) {
+    this.description = data.questions;
+    this.qq = data.id;
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
-    console.log(this.answers);
   }
-  ngOnInit() {console.log(this.description);
+
+  ngOnInit() {
+
   }
+
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -59,28 +66,34 @@ export class ImitationeditComponent implements OnInit {
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
+
   selectRow(row) {
     this.selected = row.id;
     this.answerService.getAnswers(this.selected).subscribe(data => this.answers = data);
   }
+
   openDialog(): void {
     const dialogRef = this.dialog.open(AnswereditComponent, {
         width: '700px',
         height: '700px',
-        data: this.answers,
-      }
-    )
-    ;
-    dialogRef.afterClosed();
-  }
-  open(): void {
-    const dialogRef = this.dialog.open(AddquestionComponent, {
-        width: '700px',
-        height: '700px',
-        data: this.answers,
+        data: {
+          answers: this.answers,
+          id: this.selected
+        },
       }
       )
     ;
     dialogRef.afterClosed();
+  }
+
+  open(): void {
+    const dialogRef = this.dialog.open(AddquestionComponent, {
+        width: '700px',
+        height: '700px',
+        data: this.qq
+      }
+      )
+    ;
+    dialogRef.afterClosed().subscribe();
   }
 }

@@ -9,11 +9,13 @@ import {AddanswerComponent} from '../addanswer/addanswer.component';
 })
 export class AnswereditComponent implements OnInit {
   qwe: any;
+  id: any;
   displayedColumns: string[] = ['id', 'text', 'value'];
 
   constructor(public dialogRef: MatDialogRef<AnswereditComponent>,
               @Inject(MAT_DIALOG_DATA) data: any, public dialog: MatDialog) {
-    this.qwe = data;
+    this.qwe = data.answers;
+    this.id = data.id;
   }
 
   ngOnInit() {
@@ -23,7 +25,7 @@ onClick():
     const dialogRef = this.dialog.open(AddanswerComponent, {
         width: '700px',
         height: '700px',
-        data: this.qwe,
+        data: this.id,
       }
     );
     dialogRef.afterClosed();

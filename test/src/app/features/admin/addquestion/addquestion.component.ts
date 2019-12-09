@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {QuestionsService} from '../../services/questions/questions.service';
-import {MatDialogRef} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-addquestion',
@@ -10,9 +10,13 @@ import {MatDialogRef} from '@angular/material';
   styleUrls: ['./addquestion.component.scss']
 })
 export class AddquestionComponent implements OnInit {
-QuestionForm: FormGroup;
-  constructor(  public dialogRef: MatDialogRef<AddquestionComponent>, private router: Router, private fb: FormBuilder,
-                private questionService: QuestionsService) { }
+  QuestionForm: FormGroup;
+  qw: any;
+
+  constructor(@Inject(MAT_DIALOG_DATA) data: any, public dialogRef: MatDialogRef<AddquestionComponent>, private router: Router,
+              private fb: FormBuilder, private questionService: QuestionsService) {
+    this.qw = data;
+  }
 
   ngOnInit() {
     this.initForm();
@@ -20,7 +24,7 @@ QuestionForm: FormGroup;
 
   initForm() {
     this.QuestionForm = this.fb.group({
-      id: [''],
+      imitationId: this.qw,
       text: ['', [
         Validators.required,
         Validators.pattern(/[A-z]/)
@@ -41,10 +45,10 @@ QuestionForm: FormGroup;
       return;
     }
     /* Обработка данных формы */
-    console.log(this.QuestionForm.value);
     this.questionService.addQuestion(this.QuestionForm.value)
       .subscribe();
   }
+
   onNoClick(): void {
     this.dialogRef.close();
   }

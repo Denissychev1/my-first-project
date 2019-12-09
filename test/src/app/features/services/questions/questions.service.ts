@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Question} from '../../models/questions';
-import {Answers} from '../../models/answers';
+
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +20,6 @@ export class QuestionsService {
   }
   addQuestion(question: Question): Observable<Question> {
     console.log(question);
-    return this.http.post<Answers>(this.QuestionUrl, question);
+    return this.http.post<Question>(this.QuestionUrl, question);
   }
 }

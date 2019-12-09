@@ -29,16 +29,14 @@ router.get('/imitations', imitations.getImitations);
 
 //Showing all questions
 router.get('/questions', questions.findQuestions);
-router.post('/questions', questions.findQuestions);
+router.post('/questions', questions.create);
+
+
 //Showing all answers
 router.get('/answers',answers.findAnswer);
-router.post('/answers',answers.findAnswer);
+router.post('/answers',answers.create);
 
-//Creating new question
-router.post('/questionCreate', questions.create);
 
-//Creating new answer
-router.post('/answerCreate', answers.create);
 // Delete a Customer with Id
 router.delete('/im', imitations.delete);
 

@@ -7,18 +7,19 @@ import {Answers} from '../../models/answers';
   providedIn: 'root'
 })
 export class AnswersService {
+  private param: any;
   private AnswersUrl = '/api/answers';
   constructor(private http: HttpClient) {
   }
   getAnswers(id: number): Observable<Answers[]> {
     const params = new HttpParams()
       .set('id', String(id));
+    this.param = params;
     return this.http.get<Answers[]>(this.AnswersUrl, {params});
   }
-  addAnswers(id: number, answer: Answers): Observable<Answers> {
+  addAnswers(answer: Answers): Observable<Answers> {
     console.log(answer);
-    const params = new HttpParams()
-      .set('id', String(id));
+    const params = this.param;
     return this.http.post<Answers>(this.AnswersUrl, answer, {params});
   }
 }

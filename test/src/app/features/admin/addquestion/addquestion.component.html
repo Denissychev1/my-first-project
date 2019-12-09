@@ -1,7 +1,6 @@
 <div ng-controller="Controller">
   <form [formGroup]="QuestionForm">
-    <label>Введите номер: <input type="text" formControlName="id"/></label><br />
-    <label>Введите имя: <input type="text" formControlName="text"></label><br />
+    <label>Введите текст вопроса: <input type="text" formControlName="text"></label><br />
     <input type="button" (click)="onsubmit()" value="Добавить" />
     <input type="button" (click)="onNoClick()" value="Назад" />
   </form>

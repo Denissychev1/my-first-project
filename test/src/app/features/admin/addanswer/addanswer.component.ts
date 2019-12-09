@@ -12,9 +12,10 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 export class AddanswerComponent implements OnInit {
   AnswerForm: FormGroup;
   answer: Answers[];
-qq: any;
-  constructor(   public dialogRef: MatDialogRef<AddanswerComponent>, @Inject(MAT_DIALOG_DATA) data: any,
-                 private fb: FormBuilder, private AnswerService: AnswersService) {
+  qq: any;
+
+  constructor(public dialogRef: MatDialogRef<AddanswerComponent>, @Inject(MAT_DIALOG_DATA) data: any,
+              private fb: FormBuilder, private AnswerService: AnswersService) {this.qq = data;
   }
 
 
@@ -24,7 +25,7 @@ qq: any;
 
   initForm() {
     this.AnswerForm = this.fb.group({
-      id: [''],
+      questionId: this.qq,
       text: ['', [
         Validators.required,
         Validators.pattern(/[A-z]/)
@@ -47,9 +48,10 @@ qq: any;
     }
     /* Обработка данных формы */
     console.log(this.AnswerForm.value);
-    this.AnswerService.addAnswers(this.qq, this.AnswerForm.value)
+    this.AnswerService.addAnswers(this.AnswerForm.value)
       .subscribe();
   }
+
   onNoClick(): void {
     this.dialogRef.close();
   }

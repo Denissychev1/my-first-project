@@ -6,7 +6,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
 import {QuestionsService} from '../../services/questions/questions.service';
 import {MatDialog} from '@angular/material/dialog';
-import {ImitationeditComponent} from '../imitationedit/imitationedit.component';
+import {ImitationeditComponent} from '../questions/questions.component';
 import {Question} from '../../models/questions';
 
 
@@ -73,7 +73,8 @@ export class TestsComponent implements OnInit {
     const dialogRef = this.dialog.open(ImitationeditComponent, {
       width: '700px',
       height: '700px',
-      data: this.questions,
+      data: {questions: this.questions,
+        id: this.selectedId}
   }
   );
     dialogRef.afterClosed();

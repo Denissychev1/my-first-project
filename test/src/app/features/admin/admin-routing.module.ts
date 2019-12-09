@@ -5,7 +5,7 @@ import {PatientsComponent} from './patients/patients.component';
 import {AddpatientComponent} from './addpatient/addpatient.component';
 import {AddimitationComponent} from './addimitation/addimitation.component';
 import {TestsComponent} from './tests/tests.component';
-import {ImitationeditComponent} from './imitationedit/imitationedit.component';
+import {ImitationeditComponent} from './questions/questions.component';
 
 
 const routes: Routes = [

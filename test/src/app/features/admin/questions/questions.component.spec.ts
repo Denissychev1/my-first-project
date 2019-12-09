@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ImitationeditComponent } from './imitationedit.component';
+import { ImitationeditComponent } from './questions.component';
 
 describe('ImitationeditComponent', () => {
   let component: ImitationeditComponent;

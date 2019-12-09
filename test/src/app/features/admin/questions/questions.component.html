@@ -11,27 +11,27 @@
   <!-- Position Column -->
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> No. </th>
-    <td mat-cell *matCellDef="let imitation"> {{imitation.id}} </td>
+    <td mat-cell *matCellDef="let question"> {{question.id}} </td>
   </ng-container>
 
   <!-- Name Column -->
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let imitation" class="id"> {{imitation.text}} </td>
+    <td mat-cell *matCellDef="let question" class="id"> {{question.text}} </td>
   </ng-container>
 
   <ng-container matColumnDef="createdAt">
     <th mat-header-cell *matHeaderCellDef> createdAt </th>
-    <td mat-cell *matCellDef="let imitation"> {{imitation.createdAt}} </td>
+    <td mat-cell *matCellDef="let question"> {{question.createdAt}} </td>
   </ng-container>
 
   <ng-container matColumnDef="updatedAt">
     <th mat-header-cell *matHeaderCellDef> updatedAt </th>
-    <td mat-cell *matCellDef="let imitation"> {{imitation.updatedAt}} </td>
+    <td mat-cell *matCellDef="let question"> {{question.updatedAt}} </td>
   </ng-container>
   <ng-container matColumnDef="imitationId">
     <th mat-header-cell *matHeaderCellDef> Imitation Id </th>
-    <td mat-cell *matCellDef="let imitation" class="id"> {{imitation.imitationId}} </td>
+    <td mat-cell *matCellDef="let question" class="id"> {{question.imitationId}} </td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"   (click)="selectRow(row)">
@@ -40,7 +40,7 @@
   <p></p>
   <button class="btn btn-outline-dark" (click)="onNoClick()">OK!</button>
   <button class="btn btn-outline-dark" (click)="openDialog()">Подробнее</button>
-  <button class="btn btn-outline-dark" (click)="open()">Добавить</button>
+  <button class="btn btn-outline-dark" (click)="open()">Добавить вопрос</button>
 
 </div>
 </body>
