@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Imitation} from '../../models/imitations';
 import {ImitationsService} from '../../services/imitations/imitations.service';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-addimitation',
@@ -13,7 +14,8 @@ export class AddimitationComponent implements OnInit {
   ImitationForm: FormGroup;
   Imitation: Imitation[];
 
-  constructor(private router: Router, private fb: FormBuilder, private ImitationService: ImitationsService) {
+  constructor(public dialogRef: MatDialogRef<AddimitationComponent>,
+              private router: Router, private fb: FormBuilder, private ImitationService: ImitationsService) {
   }
 
   ngOnInit() {
@@ -45,10 +47,10 @@ export class AddimitationComponent implements OnInit {
     console.log(this.ImitationForm.value);
     this.ImitationService.addImitation(this.ImitationForm.value)
       .subscribe();
-    this.router.navigateByUrl('/admin/tests');
+    this.dialogRef.close();
   }
 
-  reset() {
-    this.router.navigateByUrl('/admin/tests');
-  }
+  reset(): void {
+  this.dialogRef.close();
+}
 }

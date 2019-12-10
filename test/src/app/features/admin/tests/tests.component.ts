@@ -8,6 +8,7 @@ import {QuestionsService} from '../../services/questions/questions.service';
 import {MatDialog} from '@angular/material/dialog';
 import {ImitationeditComponent} from '../questions/questions.component';
 import {Question} from '../../models/questions';
+import {AddimitationComponent} from '../addimitation/addimitation.component';
 
 
 
@@ -55,7 +56,12 @@ export class TestsComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
   clickButton() {
-    this.router.navigateByUrl('/admin/addimitation');
+    const dialogRef = this.dialog.open(AddimitationComponent, {
+        width: '700px',
+        height: '700px',
+      }
+    );
+    dialogRef.afterClosed();
   }
 
 
