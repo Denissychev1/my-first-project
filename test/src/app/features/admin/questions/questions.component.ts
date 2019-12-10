@@ -26,10 +26,11 @@ export class ImitationeditComponent implements OnInit {
   description: any;
   dataSource = new MatTableDataSource<Question>(this.description);
   selection = new SelectionModel<Question>(false, []);
-  displayedColumns: string[] = ['id', 'name', 'imitationId'];
+  displayedColumns: string[] = ['id', 'name', 'events'];
   selected = 0;
   answers: Answers[];
   qq: any;
+  MouseIndex = -1;
 
   constructor(
     public dialogRef: MatDialogRef<ImitationeditComponent>,
@@ -97,6 +98,12 @@ export class ImitationeditComponent implements OnInit {
   }
 
   delete() {
-    this.questionService.deleteQuestion(this.selected).subscribe(data => console.log(data));
+  }
+  deleteRow(event, question) {
+    event.stopPropagation();
+    this.questionService.deleteQuestion(question.id).subscribe(data => console.log(data));
+  }
+  onMouseOver(index) {
+    this.MouseIndex = index;
   }
 }

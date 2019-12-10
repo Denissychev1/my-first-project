@@ -78,8 +78,9 @@ export class TestsComponent implements OnInit {
     );
     dialogRef.afterClosed();
   }
-  deleteRow() {
-    this.Imitationservice.deleteImitation(this.selectedId).subscribe();
+  deleteRow(event, imitation) {
+    event.stopPropagation();
+    this.Imitationservice.deleteImitation(imitation.id).subscribe();
   }
   onMouseOver(index) {
     this.MouseIndex = index;

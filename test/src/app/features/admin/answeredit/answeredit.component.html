@@ -5,33 +5,39 @@
 
 
 
-  <table mat-table [dataSource]="this.qwe" class="mat-elevation-z8">
+  <table mat-table [dataSource]="this.qwe" class="mat-elevation-z8" (mouseleave) = "MouseIndex=-1">
 
     <!-- Position Column -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let imitation"> {{imitation.id}} </td>
+      <td mat-cell *matCellDef="let answer"> {{answer.id}} </td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="text">
       <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let imitation"> {{imitation.text}} </td>
+      <td mat-cell *matCellDef="let answer"> {{answer.text}} </td>
     </ng-container>
 
     <ng-container matColumnDef="value">
       <th mat-header-cell *matHeaderCellDef> Value </th>
-      <td mat-cell *matCellDef="let imitation"> {{imitation.value}} </td>
+      <td mat-cell *matCellDef="let answer"> {{answer.value}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectRow(row)">>
+    <tr mat-row *matRowDef="let row;let index = index; columns: displayedColumns;" (click)="selectRow(row)"  (mouseover)="onMouseOver(index)">
     </tr>
+    <ng-container matColumnDef="events">
+      <th mat-header-cell *matHeaderCellDef ></th>
+      <td mat-cell *matCellDef="let answer; let index = index;">
+        <button id="td_events" *ngIf="MouseIndex === index" style="float: right" (click)="deleteRow($event, answer)">delete</button>
+      </td>
+    </ng-container>
   </table>
   <p></p>
   <button class="btn btn-outline-dark" (click)="onNoClick()">OK!</button>
   <button class="btn btn-outline-dark" (click)="onClick()">Добавить ответ</button>
-  <button class="btn btn-outline-dark" (click)="delete()">Удалить ответ</button>
+
 
 </div>
 </body>

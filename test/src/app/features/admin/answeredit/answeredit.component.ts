@@ -10,10 +10,11 @@ import {AnswersService} from '../../services/answers/answers.service';
   styleUrls: ['./answeredit.component.scss']
 })
 export class AnswereditComponent implements OnInit {
+  MouseIndex = -1;
   qwe: any;
   id: any;
   selected: any;
-  displayedColumns: string[] = ['id', 'text', 'value'];
+  displayedColumns: string[] = ['id', 'text', 'value', 'events'];
 
   constructor(public dialogRef: MatDialogRef<AnswereditComponent>,
               @Inject(MAT_DIALOG_DATA) data: any, public dialog: MatDialog, private answerService: AnswersService) {
@@ -41,5 +42,12 @@ onClick():
   }
   onNoClick(): void {
     this.dialogRef.close();
+  }
+  deleteRow(event, answer) {
+    event.stopPropagation();
+    this.answerService.deleteAnswer(answer.id).subscribe();
+  }
+  onMouseOver(index) {
+    this.MouseIndex = index;
   }
 }

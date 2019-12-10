@@ -1,3 +1,11 @@
 table {
   width: 100%;
 }
+.link_tag {
+  cursor: default;
+}
+
+.mat-row:hover {
+  cursor: default;
+  background-color: gray;
+}
